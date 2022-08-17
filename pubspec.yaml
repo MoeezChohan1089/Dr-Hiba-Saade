@@ -35,6 +35,11 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   bottom_nav_bar: ^1.0.3
   video_player: ^2.4.6
+  provider:
+  google_maps_flutter: ^2.1.8
+  geocoding: ^2.0.4
+  permission_handler: ^9.2.0
+  geolocator: ^7.0.3
 
 dev_dependencies:
   flutter_test:

@@ -1,15 +1,30 @@
 import 'package:drhibasaade/Screens/BottomNavigation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 import 'Screens/Splash.dart';
+import 'provider/location_helper.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp, DeviceOrientation.portraitDown
+  ]).then((value) => runApp (MultiProvider(
+      providers: [
+  ChangeNotifierProvider(create: (context) => LocationHelper()),
+  ],
+      child: const  MyApp())));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

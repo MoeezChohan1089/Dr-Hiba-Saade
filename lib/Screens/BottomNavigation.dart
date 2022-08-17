@@ -5,9 +5,9 @@ import 'package:drhibasaade/Screens/Service.dart';
 import 'package:flutter/material.dart';
 import 'package:bottom_nav_bar/bottom_nav_bar.dart';
 
-import 'About.dart';
+import 'about.dart';
 import 'Appointment.dart';
-import 'Contact.dart';
+import 'contact.dart';
 import 'Drawer.dart';
 
 class MyHomePage extends StatefulWidget {
