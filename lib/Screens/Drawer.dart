@@ -1,4 +1,6 @@
 import 'package:drhibasaade/Screens/About.dart';
+import 'package:drhibasaade/Screens/aboutAppBar.dart';
+import 'package:drhibasaade/Screens/loginPage.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -16,7 +18,7 @@ class AppDrawer extends StatelessWidget {
             accountEmail: Text(''),
             currentAccountPicture: CircleAvatar(
               child: Image.asset(
-                'assets/logo_image-to-text_dark_7.png',
+                'assets/logo.png',
                 fit: BoxFit.cover,
                 width: 90,
                 height: 90,
@@ -43,7 +45,7 @@ class AppDrawer extends StatelessWidget {
             onTap: (){
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => AboutPage()),
+                MaterialPageRoute(builder: (context) => AboutAppBar()),
               );
             },
           ),
@@ -59,11 +61,43 @@ class AppDrawer extends StatelessWidget {
             leading: Icon(Icons.login_outlined),
             title: Text('Login'),
             onTap: (){
-
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LoginPage()),
+              );
             },
           ),
-          Divider(),
+          Divider(
 
+          ),
+          Divider(
+            color: Colors.transparent,
+          ),
+          Divider(
+            color: Colors.transparent,
+          ),
+          Divider(
+            color: Colors.transparent,
+          ),
+          Divider(
+            color: Colors.transparent,
+          ),
+          Divider(
+            color: Colors.transparent,
+          ),
+          Divider(
+            color: Colors.transparent,
+          ),
+          Divider(
+            color: Colors.transparent,
+          ),
+          Divider(
+            color: Colors.transparent,
+          ),
+
+          ListTile(
+            title: Text('Follow Us', textAlign: TextAlign.center, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+          ),
           ListTile(
             title: Text('Facebook'),
             leading: Icon(Icons.facebook_outlined, color: Colors.blue,),

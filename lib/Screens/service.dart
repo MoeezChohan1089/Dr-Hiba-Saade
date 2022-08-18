@@ -20,21 +20,21 @@ class _ServicePageState extends State<ServicePage> {
             //Space
             SizedBox(height: 10,),
             //b
-            Container(
-              padding: kHrPadding,
-              child: Container(
-                width: double.infinity,
-                height: 220,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage("assets/images/teeth_img.jpg")
-                  )
+           Container(
+                  padding: kHrPadding,
+                  child: Container(
+                    width: double.infinity,
+                    height: 220,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage("assets/images/teeth_img.jpg")
+                        )
+                    ),
+                    clipBehavior: Clip.hardEdge,
+                  ),
                 ),
-                clipBehavior: Clip.hardEdge,
-              ),
-            ),
             //Space
             SizedBox(height: 20,),
             Container(

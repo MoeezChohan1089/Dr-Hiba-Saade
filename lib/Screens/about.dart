@@ -15,18 +15,6 @@ class _AboutPageState extends State<AboutPage> {
     // TODO: implement build
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        title: Text("About Us", style: TextStyle(color: Colors.black),),
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: (){
-            Navigator.of(context).pop();
-          },
-          icon: Icon(Icons.arrow_back, color: Colors.black,),
-        ),
-      ),
       body: Column(
         children: [
           Image.asset('assets/landing.png'),

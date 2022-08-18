@@ -11,6 +11,18 @@ class _AppointmentPageState extends State<AppointmentPage> {
     // TODO: implement build
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: Text("Appointment", style: TextStyle(color: Colors.black),),
+        centerTitle: true,
+        leading: IconButton(
+          onPressed: (){
+            Navigator.of(context).pop();
+          },
+          icon: Icon(Icons.arrow_back, color: Colors.black,),
+        ),
+      ),
       body: Center(
         child: Text("Appointment"),
       ),

@@ -18,7 +18,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<Widget> _pages = [Home(), AppointmentPage(), ServicePage(), ContactPage()];
+  List<Widget> _pages = [Home(), ServicePage(), ContactPage(), AboutPage()];
 
   int _currentIndex = 0;
   PageController _pageController = new PageController(initialPage: 0);
@@ -55,57 +55,61 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
         backgroundColor: Colors.white,
         elevation: 0,
-        title: (_currentIndex == 0)?Text("Home", style: TextStyle(color: Colors.black),):(_currentIndex == 1)?Text("Appointment", style: TextStyle(color: Colors.black)):(_currentIndex == 2)?Text("Service", style: TextStyle(color: Colors.black)):(_currentIndex == 3)?Text("Contact", style: TextStyle(color: Colors.black)):SizedBox(),
+        title: (_currentIndex == 0)?Text("Home", style: TextStyle(color: Colors.black),):(_currentIndex == 1)?Text("Service", style: TextStyle(color: Colors.black)):(_currentIndex == 2)?Text("Contact", style: TextStyle(color: Colors.black)):(_currentIndex == 3)?Text("About Us", style: TextStyle(color: Colors.black)):SizedBox(),
         centerTitle: true,
-        actions: [
-          IconButton(
-            icon: Icon(Icons.error_outline, color: Colors.black,),
-            onPressed: (){
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => AboutPage()),
-              );
-            },
-          )
-        ],
       ),
       body: SizedBox.expand(
         child: _pages[_currentIndex],
       ),
-        bottomNavigationBar: BottomNavigationBar(
-          elevation: 0,
-          backgroundColor: Colors.white,
-          fixedColor: Colors.blueAccent,
-          onTap: _onItemTapped,
-          currentIndex: _currentIndex,
-          items: [
-            BottomNavigationBarItem(
-                backgroundColor: Colors.white,
-                icon: Icon(Icons.home_rounded, color: _currentIndex == 0? Colors.blueAccent:Colors.black,),
-                label: "Home"
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => AppointmentPage()),
+          );
+        },
+      ),
+        bottomNavigationBar:
+        BottomAppBar(
+          shape: CircularNotchedRectangle(),
+          notchMargin: 4.0,
+          child: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed ,
+            backgroundColor: Colors.white,
+            fixedColor: Colors.blueAccent,
+            onTap: _onItemTapped,
+            currentIndex: _currentIndex,
+            items: [
+              BottomNavigationBarItem(
+                  backgroundColor: Colors.white,
+                  icon: Icon(Icons.home_rounded, color: _currentIndex == 0? Colors.blueAccent:Colors.black,),
+                  label: "Home"
 
-            ),
-            BottomNavigationBarItem(
-              backgroundColor: Colors.white,
-              icon: Icon(Icons.pending_actions, color: _currentIndex == 1? Colors.blueAccent:Colors.black),
-              label: 'Appointment',
-            ),
-            BottomNavigationBarItem(
-              backgroundColor: Colors.white,
-              icon: Icon(Icons.medical_services, color: _currentIndex == 2? Colors.blueAccent:Colors.black,),
-              label: 'Service',
-            ),
-            BottomNavigationBarItem(
-              backgroundColor: Colors.white,
-              icon: Icon(Icons.contact_page_outlined, color: _currentIndex == 3? Colors.blueAccent:Colors.black,),
-              label: 'Contact',
-            ),
-            // BottomNavigationBarItem(
-            //   backgroundColor: Colors.red,
-            //   icon: Icon(Icons.person),
-            //   label: 'Profile',
-            // ),
-          ],
+              ),
+              BottomNavigationBarItem(
+                backgroundColor: Colors.white,
+                icon: Icon(Icons.medical_services, color: _currentIndex == 1? Colors.blueAccent:Colors.black,),
+                label: 'Service',
+              ),
+              BottomNavigationBarItem(
+                backgroundColor: Colors.white,
+                icon: Icon(Icons.contact_page_outlined, color: _currentIndex == 2? Colors.blueAccent:Colors.black,),
+                label: 'Contact',
+              ),
+              BottomNavigationBarItem(
+                backgroundColor: Colors.white,
+                icon: Icon(Icons.error_outline, color: _currentIndex == 3? Colors.blueAccent:Colors.black),
+                label: 'About Us',
+              ),
+              // BottomNavigationBarItem(
+              //   backgroundColor: Colors.red,
+              //   icon: Icon(Icons.person),
+              //   label: 'Profile',
+              // ),
+            ],
+          )
         ),
     );
   }
