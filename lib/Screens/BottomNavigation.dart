@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:drhibasaade/Screens/HomePage.dart';
-import 'package:drhibasaade/Screens/Service.dart';
+import 'package:drhibasaade/Screens/service.dart';
 import 'package:flutter/material.dart';
 import 'package:bottom_nav_bar/bottom_nav_bar.dart';
 
