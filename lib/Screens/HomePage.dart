@@ -2,6 +2,7 @@ import 'package:drhibasaade/utilites/constants.dart';
 import 'package:drhibasaade/widgets/custom_button.dart';
 import 'package:drhibasaade/widgets/custom_slider.dart';
 import 'package:drhibasaade/widgets/custom_text.dart';
+import 'package:drhibasaade/widgets/price_plan_slider.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget{
@@ -228,7 +229,37 @@ class _HomeState extends State<Home> {
                     ),
                   );
                 }
-            )
+            ),
+            //Space
+            SizedBox(height: 25,),
+            Container(
+              padding: kHrPadding,
+              alignment: Alignment.centerLeft,
+              child: CustomText(
+                title: "PRICING PLAN",
+                fontSize: 22,
+                color: blackColor,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            //Space
+            SizedBox(height: 10,),
+            Container(
+              padding: kHrPadding,
+              alignment: Alignment.centerLeft,
+              child: CustomText(
+                title: "We Offer Fair Prices for Dental Treatment",
+                fontSize: 19,
+                color: blackColor,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            //Space
+            SizedBox(height: 25,),
+
+            PricePlanSlider(),
+            //Space
+            SizedBox(height: 30,),
           ],
         ),
       )
