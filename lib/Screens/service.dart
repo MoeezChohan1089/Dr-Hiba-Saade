@@ -1,5 +1,7 @@
+import 'package:before_after/before_after.dart';
 import 'package:drhibasaade/utilites/constants.dart';
 import 'package:drhibasaade/widgets/custom_text.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ServicePage extends StatefulWidget{
@@ -20,21 +22,32 @@ class _ServicePageState extends State<ServicePage> {
             //Space
             SizedBox(height: 10,),
             //b
-           Container(
-                  padding: kHrPadding,
-                  child: Container(
-                    width: double.infinity,
-                    height: 220,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: AssetImage("assets/images/teeth_img.jpg")
-                        )
-                    ),
-                    clipBehavior: Clip.hardEdge,
-                  ),
+            BeforeAfter(
+              beforeImage: Container(
+                width: double.infinity,
+                height: 220,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage("assets/images/teeth_before.jpg")
+                    )
                 ),
+                clipBehavior: Clip.hardEdge,
+              ),
+              afterImage: Container(
+                width: double.infinity,
+                height: 220,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage("assets/images/teeth_img.jpg")
+                    )
+                ),
+                clipBehavior: Clip.hardEdge,
+              ),
+            ),
             //Space
             SizedBox(height: 20,),
             Container(

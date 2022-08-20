@@ -25,7 +25,7 @@ class _PricePlanSliderState extends State<PricePlanSlider> {
         children: [
           //Slider
           Container(
-            height: 340,
+            height: 390,
             width: double.infinity,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8)
@@ -71,7 +71,7 @@ class _PricePlanSliderState extends State<PricePlanSlider> {
                                   children: [
                                     Container(
                                       width: double.infinity,
-                                        height: 140,
+                                        height: 190,
                                         decoration: BoxDecoration(
                                             borderRadius: BorderRadius.only(
                                               topRight: Radius.circular(7),
@@ -85,7 +85,7 @@ class _PricePlanSliderState extends State<PricePlanSlider> {
                                       width: double.infinity,
                                       height: 200,
                                       decoration: BoxDecoration(
-                                        color: Colors.lightBlueAccent
+                                        color: Colors.lightBlueAccent.shade100
                                       ),
                                       child: Column(
                                         children: [
@@ -104,9 +104,9 @@ class _PricePlanSliderState extends State<PricePlanSlider> {
                                                 btnRadius: 7,
                                                 title: '\$200',
                                                 fontWeight: FontWeight.w600,
-                                                btnColor: Colors.lightBlueAccent,
+                                                btnColor: Colors.lightBlueAccent.shade100,
                                                 textColor: blackColor,
-                                                fontSize: 14,
+                                                fontSize: 16,
                                               ),
                                             ),
                                           ),

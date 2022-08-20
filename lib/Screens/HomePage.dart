@@ -1,8 +1,10 @@
 import 'package:drhibasaade/utilites/constants.dart';
+import 'package:drhibasaade/widgets/Testimonial_slide.dart';
 import 'package:drhibasaade/widgets/custom_button.dart';
 import 'package:drhibasaade/widgets/custom_slider.dart';
 import 'package:drhibasaade/widgets/custom_text.dart';
 import 'package:drhibasaade/widgets/price_plan_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget{
@@ -29,147 +31,146 @@ class _HomeState extends State<Home> {
             //
             Container(
               padding: kHrPadding,
-              child: Row(
+              child: Column(
                 children: [
-                  Expanded(
-                      child: Container(
-                        height: 160,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: Colors.lightBlueAccent
+                  Container(
+                    height: MediaQuery.of(context).size.height*0.30,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(topLeft: Radius.circular(8), topRight: Radius.circular(8)),
+                      color: Colors.lightBlueAccent
+                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 8,vertical: 15),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        //
+                        CustomText(
+                          title: "Opening Hours",
+                          fontSize: 22,
+                          color: whiteColor,
+                          fontWeight: FontWeight.bold,
                         ),
-                        padding: EdgeInsets.symmetric(horizontal: 8,vertical: 15),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        //Space
+                        SizedBox(height: 20,),
+                        //
+                        Row(
                           children: [
-                            //
                             CustomText(
-                              title: "Opening Hours",
-                              fontSize: 20,
+                              title: "Mon-Wed:",
+                              fontSize: 17,
                               color: whiteColor,
                             ),
                             //Space
-                            SizedBox(height: 12,),
-                            //
-                            Row(
-                              children: [
-                                CustomText(
-                                  title: "Mon-Wed:",
-                                  fontSize: 15,
-                                  color: whiteColor,
-                                ),
-                                //Space
-                                SizedBox(width: 5,),
-                                CustomText(
-                                  title: "10:00AM - 7:00PM",
-                                  fontSize: 10,
-                                  color: whiteColor,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ],
-                            ),
-                            //Space
-                            SizedBox(height: 12,),
-                            //
-                            Row(
-                              children: [
-                                CustomText(
-                                  title: "Thursday",
-                                  fontSize: 15,
-                                  color: whiteColor,
-                                ),
-                                //Space
-                                SizedBox(width: 5,),
-                                CustomText(
-                                  title: "10:00AM - 4:00PM",
-                                  fontSize: 10,
-                                  color: whiteColor,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ],
-                            ),
-                            //Space
-                            SizedBox(height: 12,),
-                            //
-                            Row(
-                              children: [
-                                CustomText(
-                                  title: "Sat - Sun",
-                                  fontSize: 15,
-                                  color: whiteColor,
-                                ),
-                                //Space
-                                SizedBox(width: 5,),
-                                CustomText(
-                                  title: "10:00AM - 7:00PM",
-                                  fontSize: 10,
-                                  color: whiteColor,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ],
+                            SizedBox(width: 5,),
+                            CustomText(
+                              title: "10:00AM - 7:00PM",
+                              fontSize: 12,
+                              color: whiteColor,
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ],
                         ),
-                      )),
+                        //Space
+                        SizedBox(height: 12,),
+                        //
+                        Row(
+                          children: [
+                            CustomText(
+                              title: "Thursday",
+                              fontSize: 17,
+                              color: whiteColor,
+                            ),
+                            //Space
+                            SizedBox(width: 5,),
+                            CustomText(
+                              title: "10:00AM - 4:00PM",
+                              fontSize: 12,
+                              color: whiteColor,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ],
+                        ),
+                        //Space
+                        SizedBox(height: 12,),
+                        //
+                        Row(
+                          children: [
+                            CustomText(
+                              title: "Sat - Sun",
+                              fontSize: 17,
+                              color: whiteColor,
+                            ),
+                            //Space
+                            SizedBox(width: 5,),
+                            CustomText(
+                              title: "10:00AM - 7:00PM",
+                              fontSize: 12,
+                              color: whiteColor,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ],
+                        ),
+
+                        SizedBox(height: 15,),
+                        //
+                        Container(
+                          padding: kHrPadding,
+                          child: CustomButton(
+                            onPressed: () {
+                            },
+                            btnHeight: 48,
+                            btnRadius: 7,
+                            title: 'Appointment',
+                            fontWeight: FontWeight.w600,
+                            btnColor: Colors.blueAccent,
+                            textColor: whiteColor,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                   //Space
                   SizedBox(width: 8,),
-                  Expanded(
-                      child: Container(
-                        height: 160,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            color: Colors.redAccent
+                  Container(
+                    height: MediaQuery.of(context).size.height*0.30,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(8), bottomRight: Radius.circular(8)),
+                        color: Colors.redAccent
+                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 8,vertical: 15),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        //
+                        CustomText(
+                          title: "Make Appointment",
+                          fontSize: 22,
+                          color: whiteColor,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
-                        padding: EdgeInsets.symmetric(horizontal: 8,vertical: 15),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            //
-                            CustomText(
-                              title: "Make Appointment",
-                              fontSize: 18,
-                              color: whiteColor,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            //Space
-                            SizedBox(height: 12,),
-                            CustomText(
-                              title: "Ipsum erat ipsum dolor clita rebum "
-                                  "no rebum dolores labore, ipsum magna at eos eos amet.",
-                              fontSize: 14,
-                              color: whiteColor,
-                            ),
-                            //Space
-                            SizedBox(height: 12,),
-                            CustomText(
-                              title: "+962 795258121",
-                              fontSize: 18,
-                              color: whiteColor,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ],
+                        //Space
+                        SizedBox(height: 25,),
+                        CustomText(
+                          title: "Ipsum erat ipsum dolor clita rebum "
+                              "no rebum dolores labore, ipsum magna at eos eos amet.",
+                          fontSize: 15,
+                          color: whiteColor,
                         ),
-                      )),
+                        //Space
+                        SizedBox(height: 12,),
+                        CustomText(
+                          title: "+962 795258121",
+                          fontSize: 18,
+                          color: whiteColor,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
-              ),
-            ),
-            //Space
-            SizedBox(height: 15,),
-            //
-            Container(
-              padding: kHrPadding,
-              child: CustomButton(
-                onPressed: () {
-                },
-                btnHeight: 48,
-                btnRadius: 7,
-                title: 'Appointment',
-                fontWeight: FontWeight.w600,
-                btnColor: Colors.blueAccent,
-                textColor: whiteColor,
-                fontSize: 14,
               ),
             ),
             //Space
@@ -259,6 +260,9 @@ class _HomeState extends State<Home> {
 
             PricePlanSlider(),
             //Space
+            SizedBox(height: 50,),
+
+            testMonialSilde(),
             SizedBox(height: 30,),
           ],
         ),

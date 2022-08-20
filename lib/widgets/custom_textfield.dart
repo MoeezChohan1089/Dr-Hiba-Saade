@@ -8,6 +8,7 @@ class CustomTextField extends StatelessWidget {
   CustomTextField(
       {this.enabled,
       this.obscureText,
+        this.readOnly,
       this.focusNode,
       this.onChanged,
       this.onSubmited,
@@ -52,6 +53,7 @@ class CustomTextField extends StatelessWidget {
       : super(key: key);
   bool? enabled;
   bool? obscureText;
+  bool? readOnly;
   String? Function(String?)? validation;
   String? Function(String?)? onChanged;
   String? Function(String?)? onSubmited;
@@ -98,12 +100,13 @@ class CustomTextField extends StatelessWidget {
     return TextFormField(
       enabled: enabled,
       obscureText: obscureText ?? false,
+      readOnly: readOnly??false,
       maxLength: maxLength,
       maxLines: maxLines ?? 1,
       maxLengthEnforcement: MaxLengthEnforcement.none,
       focusNode: focusNode,
       onTap: () {
-        // onTap!();
+         onTap!();
       },
       validator: validation,
       onChanged: onChanged,
