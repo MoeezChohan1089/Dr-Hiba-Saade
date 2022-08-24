@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:drhibasaade/Model/serivceModel.dart';
 import 'package:drhibasaade/utilites/constants.dart';
 import 'package:drhibasaade/widgets/Testimonial_slide.dart';
 import 'package:drhibasaade/widgets/custom_button.dart';
@@ -6,6 +9,7 @@ import 'package:drhibasaade/widgets/custom_text.dart';
 import 'package:drhibasaade/widgets/price_plan_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:dio/dio.dart';
 
 class Home extends StatefulWidget{
   @override
@@ -13,12 +17,45 @@ class Home extends StatefulWidget{
 }
 
 class _HomeState extends State<Home> {
+  List<dynamic> showSlider = [];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    ShowSlider();
+    super.initState();
+  }
+
+
+  ShowSlider() async{
+    Dio dio = Dio();
+    Response response = await dio.get('http://drhibasaadeh.com/api/patients/carousel/', options: Options(headers: {
+      "Authorization": "Bearer 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b",
+      "Cookie": "csrftoken=96SAAzBY9QG1LVADZLGDkKDFsYpqQ50vZHGZZjOQ6vNfI211OpgMMJ6sd7zFQSSQ; sessionid=dahek6b61n15egs09dhx6ej7x979pq97"
+    }));
+
+    if(response.statusCode == 200){
+      showSlider = response.data;
+      print("response slider: ${showSlider}");
+    }else{
+      print("Response error");
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(
+        "Please check your Internet Connection", textAlign: TextAlign.center,
+        style: TextStyle(color: Colors.white,),),
+        behavior: SnackBarBehavior.floating,
+        elevation: 0,
+        backgroundColor: Color(0xff666666),
+        duration: Duration(milliseconds: 1000),));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
       backgroundColor: Colors.white,
-      body:SingleChildScrollView(
+      body: (showSlider == null)? Center(child: CircularProgressIndicator(),): SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Column(
           children: [
@@ -259,6 +296,7 @@ class _HomeState extends State<Home> {
             SizedBox(height: 25,),
 
             PricePlanSlider(),
+
             //Space
             SizedBox(height: 50,),
 
@@ -269,4 +307,5 @@ class _HomeState extends State<Home> {
       )
     );
   }
+
 }

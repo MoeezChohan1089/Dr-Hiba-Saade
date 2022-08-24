@@ -1,7 +1,9 @@
 
 
+import 'package:dio/dio.dart';
 import 'package:drhibasaade/utilites/constants.dart';
 import 'package:drhibasaade/widgets/custom_text.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AboutPage extends StatefulWidget{
@@ -10,14 +12,38 @@ class AboutPage extends StatefulWidget{
 }
 
 class _AboutPageState extends State<AboutPage> {
+  Map? aboutData;
+  bool isLoading = false;
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    Future.delayed(
+      Duration(seconds: 4),
+          () => Center(child: CircularProgressIndicator()),
+    ).then((value) {
+      return ShowAbout();
+    });
+    isLoading = true;
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
+      body: aboutData == null? Center(child: CircularProgressIndicator()) : Column(
         children: [
-          Image.asset('assets/landing.png'),
+          Padding(
+            padding: const EdgeInsets.only(left: 15, right: 15),
+            child: Align(
+                alignment: Alignment.bottomLeft,
+                child: Text('About Us of Hiba Saadeh', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),)),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Image.network('http://drhibasaadeh.com/media/uploads/2022/04/04/carousel-1_nwymlkm.jpg'),
+          ),
           SizedBox(height: 20,),
           //location
           Container(
@@ -25,7 +51,7 @@ class _AboutPageState extends State<AboutPage> {
             alignment: Alignment.centerLeft,
             child: Row(
               children: [
-                Icon(Icons.person,color: blackColor,),
+                Icon(Icons.inbox_outlined,color: blackColor,),
                 //Space
                 SizedBox(width: 20,),
                 //
@@ -35,7 +61,7 @@ class _AboutPageState extends State<AboutPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           CustomText(
-                            title: "Name",
+                            title: "Add Date",
                             fontSize: 20,
                             color: blackColor,
                             fontWeight: FontWeight.w700,
@@ -43,7 +69,7 @@ class _AboutPageState extends State<AboutPage> {
                           //Space
                           SizedBox(height: 5,),
                           CustomText(
-                            title: "Dr. Hiba Saadeh",
+                            title: aboutData!['add_date'],
                             fontSize: 15,
                             color: greyColor,
                             fontWeight: FontWeight.w700,
@@ -62,7 +88,7 @@ class _AboutPageState extends State<AboutPage> {
             alignment: Alignment.centerLeft,
             child: Row(
               children: [
-                Icon(Icons.location_on,color: blackColor,),
+                Icon(Icons.outbond_outlined,color: blackColor,),
                 //Space
                 SizedBox(width: 20,),
                 //
@@ -72,7 +98,7 @@ class _AboutPageState extends State<AboutPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           CustomText(
-                            title: "Office",
+                            title: "Updated Date",
                             fontSize: 20,
                             color: blackColor,
                             fontWeight: FontWeight.w700,
@@ -80,7 +106,7 @@ class _AboutPageState extends State<AboutPage> {
                           //Space
                           SizedBox(height: 5,),
                           CustomText(
-                            title: "Dr. Hiba Saadeh Dental Clinic",
+                            title: aboutData!['update_date'],
                             fontSize: 15,
                             color: greyColor,
                             fontWeight: FontWeight.w700,
@@ -93,80 +119,38 @@ class _AboutPageState extends State<AboutPage> {
           ),
           //Space
           SizedBox(height: 20,),
-          //Email
-          Container(
-            padding: kHrPadding,
-            alignment: Alignment.centerLeft,
-            child: Row(
-              children: [
-                Icon(Icons.mail,color: blackColor,),
-                //Space
-                SizedBox(width: 20,),
-                //
-                Expanded(
-                    child: Container(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          CustomText(
-                            title: "Email",
-                            fontSize: 20,
-                            color: blackColor,
-                            fontWeight: FontWeight.w700,
-                          ),
-                          //Space
-                          SizedBox(height: 5,),
-                          CustomText(
-                            title: "info@example.com",
-                            fontSize: 15,
-                            color: greyColor,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ],
-                      ),
-                    ))
-              ],
-            ),
-          ),
-          //Space
-          SizedBox(height: 20,),
-          //Call
-          Container(
-            padding: kHrPadding,
-            alignment: Alignment.centerLeft,
-            child: Row(
-              children: [
-                Icon(Icons.call,color: blackColor,),
-                //Space
-                SizedBox(width: 20,),
-                //
-                Expanded(
-                    child: Container(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          CustomText(
-                            title: "Call",
-                            fontSize: 20,
-                            color: blackColor,
-                            fontWeight: FontWeight.w700,
-                          ),
-                          //Space
-                          SizedBox(height: 5,),
-                          CustomText(
-                            title: "+962 795258121",
-                            fontSize: 15,
-                            color: greyColor,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ],
-                      ),
-                    ))
-              ],
-            ),
-          ),
         ],
-      )
+      ),
+
     );
+  }
+
+   ShowAbout() async{
+    Dio dio = Dio();
+    Response response = await dio.get('http://drhibasaadeh.com/api/patients/aboutus/', options: Options(headers: {
+      "Authorization": "Bearer 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b",
+      "Cookie": "csrftoken=96SAAzBY9QG1LVADZLGDkKDFsYpqQ50vZHGZZjOQ6vNfI211OpgMMJ6sd7zFQSSQ; sessionid=dahek6b61n15egs09dhx6ej7x979pq97"
+    }));
+
+    if(response.statusCode == 200){
+      aboutData = response.data;
+      // map.decoder.toString();
+      print("response Data: ${aboutData}");
+      // print("after response: ${}");
+      setState(() {
+        isLoading = true;
+        //   print("after response Data: ${servicePlan}");
+      });
+    }else{
+      print("Response error");
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(
+        "Please check your Internet Connection", textAlign: TextAlign.center,
+        style: TextStyle(color: Colors.white,),),
+        behavior: SnackBarBehavior.floating,
+        elevation: 0,
+        backgroundColor: Color(0xff666666),
+        duration: Duration(milliseconds: 1000),));
+    }
   }
 }

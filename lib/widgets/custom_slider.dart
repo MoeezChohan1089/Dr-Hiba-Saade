@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dio/dio.dart';
 import 'package:drhibasaade/utilites/constants.dart';
 import 'package:flutter/material.dart';
 class CustomSlider extends StatefulWidget {
@@ -9,12 +10,16 @@ class CustomSlider extends StatefulWidget {
 }
 
 class _CustomSliderState extends State<CustomSlider> {
-   List images =[
-     "assets/images/dentict_img.jpg",
-     "assets/images/dentict_img.jpg",
-     "assets/images/dentict_img.jpg",
-   ];
-int currentPage=0;
+  List<dynamic> showSlider = [];
+  int currentPage=0;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+   ShowSlider();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,7 +27,7 @@ int currentPage=0;
         children: [
           //Slider
           Container(
-            height: 220,
+            height: 190,
             width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8)
@@ -30,12 +35,25 @@ int currentPage=0;
             clipBehavior: Clip.hardEdge,
             child: Stack(
               children: [
-                CarouselSlider(
+                CarouselSlider.builder(
+                    itemCount: showSlider.length,
+                    itemBuilder: (_,index,page){
+                      return Container(
+                          width: double.infinity,
+                          height: double.infinity,
+                          decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(7)
+                          ),
+                          clipBehavior: Clip.hardEdge,
+                          child: Image.network("http://drhibasaadeh.com${showSlider[index]['carousel_image']}",fit: BoxFit.fill,)
+                      );
+                    },
                   options: CarouselOptions(
-                    height: double.infinity,
-                    viewportFraction: 0.99,
-
                     autoPlay: true,
+                    enlargeCenterPage: true,
+                    viewportFraction: 0.98,
+                    // aspectRatio: 0.79,
+                    initialPage: 0,
                     onPageChanged: (
                         CarouselPageChangedReason, val) {
                       setState(() {
@@ -43,23 +61,6 @@ int currentPage=0;
                       });
                     },
                   ),
-                  //  carouselController: carouselController,
-                  items: images.map((i) {
-                    //  currentPage = images!.length-1;
-                    return Builder(
-                      builder: (BuildContext context) {
-                        return Container(
-                            width: double.infinity,
-                            height: double.infinity,
-                            decoration: BoxDecoration(
-                              //    borderRadius: BorderRadius.circular(7)
-                            ),
-                            clipBehavior: Clip.hardEdge,
-                            child: Image.asset(i,fit: BoxFit.fill,)
-                        );
-                      },
-                    );
-                  }).toList(),
                 ),
                 Positioned.directional(
                   textDirection: Directionality.of(context),
@@ -68,7 +69,7 @@ int currentPage=0;
                   bottom: 20,
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children:List.generate(3, (index){
+                      children:List.generate(5, (index){
                         return buildDot(index: index);
                       })
                   ),
@@ -92,4 +93,29 @@ int currentPage=0;
       ), duration: Duration(milliseconds: 350),
     );
   }
+
+ShowSlider() async{
+  Dio dio = Dio();
+  Response response = await dio.get('http://drhibasaadeh.com/api/patients/carousel/', options: Options(headers: {
+    "Authorization": "Bearer 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b",
+    "Cookie": "csrftoken=96SAAzBY9QG1LVADZLGDkKDFsYpqQ50vZHGZZjOQ6vNfI211OpgMMJ6sd7zFQSSQ; sessionid=dahek6b61n15egs09dhx6ej7x979pq97"
+  }));
+
+  if(response.statusCode == 200){
+    setState((){
+      showSlider = response.data;
+    });
+    print("response slider: ${showSlider}");
+  }else{
+    print("Response error");
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(
+      "Please check your Internet Connection", textAlign: TextAlign.center,
+      style: TextStyle(color: Colors.white,),),
+      behavior: SnackBarBehavior.floating,
+      elevation: 0,
+      backgroundColor: Color(0xff666666),
+      duration: Duration(milliseconds: 1000),));
+  }
+}
 }
