@@ -1,9 +1,7 @@
-import 'dart:ui';
 
 import 'package:drhibasaade/Screens/HomePage.dart';
 import 'package:drhibasaade/Screens/service.dart';
 import 'package:flutter/material.dart';
-import 'package:bottom_nav_bar/bottom_nav_bar.dart';
 
 import 'about.dart';
 import 'Appointment.dart';
@@ -18,11 +16,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<Widget> _pages = [Home(), ServicePage(), ContactPage(), AboutPage()];
+  final List<Widget> _pages = [Home(), ServicePage(), ContactPage(), AboutPage()];
 
   int _currentIndex = 0;
-  PageController _pageController = new PageController(initialPage: 0);
-  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final PageController _pageController = PageController(initialPage: 0);
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   void _handleTabSelection() {
     setState(() {});
@@ -55,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
         backgroundColor: Colors.white,
         elevation: 0,
-        title: (_currentIndex == 0)?Text("Home", style: TextStyle(color: Colors.black),):(_currentIndex == 1)?Text("Service", style: TextStyle(color: Colors.black)):(_currentIndex == 2)?Text("Contact", style: TextStyle(color: Colors.black)):(_currentIndex == 3)?Text("About Us", style: TextStyle(color: Colors.black)):SizedBox(),
+        title: (_currentIndex == 0)?const Text("Home", style: TextStyle(color: Colors.black),):(_currentIndex == 1)?const Text("Service", style: TextStyle(color: Colors.black)):(_currentIndex == 2)?const Text("Contact", style: TextStyle(color: Colors.black)):(_currentIndex == 3)?const Text("About Us", style: TextStyle(color: Colors.black)):const SizedBox(),
         centerTitle: true,
       ),
       body: SizedBox.expand(
@@ -73,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
         bottomNavigationBar:
         BottomAppBar(
-          shape: CircularNotchedRectangle(),
+          shape: const CircularNotchedRectangle(),
           notchMargin: 4.0,
           child: BottomNavigationBar(
             type: BottomNavigationBarType.fixed ,

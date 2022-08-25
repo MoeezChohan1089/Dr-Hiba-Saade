@@ -1,8 +1,6 @@
 
 
 import 'package:drhibasaade/Screens/about.dart';
-import 'package:drhibasaade/utilites/constants.dart';
-import 'package:drhibasaade/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 
 class AboutAppBar extends StatefulWidget{
@@ -19,13 +17,13 @@ class _AboutAppBarState extends State<AboutAppBar> {
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0,
-          title: Text("About Us", style: TextStyle(color: Colors.black),),
+          title: const Text("About Us", style: TextStyle(color: Colors.black),),
           centerTitle: true,
           leading: IconButton(
             onPressed: (){
               Navigator.of(context).pop();
             },
-            icon: Icon(Icons.arrow_back, color: Colors.black,),
+            icon: const Icon(Icons.arrow_back, color: Colors.black,),
           ),
         ),
         body: AboutPage(),

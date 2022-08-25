@@ -20,8 +20,8 @@ class _PricePlanSliderState extends State<PricePlanSlider> {
   void initState() {
     // TODO: implement initState
     Future.delayed(
-      Duration(seconds: 4),
-          () => Center(child: CircularProgressIndicator()),
+      const Duration(seconds: 4),
+          () => const Center(child: CircularProgressIndicator()),
     ).then((value) {
       return ShowPlanService();
     });
@@ -41,7 +41,7 @@ class _PricePlanSliderState extends State<PricePlanSlider> {
                 itemCount: servicePlan.length,
                 itemBuilder: (context, index, page){
                   var earthquake = servicePlan[index]['price'];
-                  print("time: $earthquake");
+               //   print("time: $earthquake");
                   return   Stack(
                     children: [
                       Wrap(
@@ -49,7 +49,7 @@ class _PricePlanSliderState extends State<PricePlanSlider> {
                           Container(
                               width: double.infinity,
                               height: 250,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   borderRadius: BorderRadius.only(
                                     topRight: Radius.circular(7),
                                     topLeft: Radius.circular(7),
@@ -67,7 +67,7 @@ class _PricePlanSliderState extends State<PricePlanSlider> {
                             child: Column(
                               children: [
                                 Transform.translate(
-                                  offset: Offset(0.0,-30),
+                                  offset: const Offset(0.0,-30),
                                   child: Card(
                                     elevation: 4,
                                     shape: RoundedRectangleBorder(
@@ -79,7 +79,7 @@ class _PricePlanSliderState extends State<PricePlanSlider> {
                                       btnHeight: 48,
                                       btnWidth: 100,
                                       btnRadius: 7,
-                                      title: "\$${earthquake}",
+                                      title: "\$$earthquake",
                                       fontWeight: FontWeight.w600,
                                       btnColor: Colors.lightBlueAccent.shade100,
                                       textColor: blackColor,
@@ -88,7 +88,7 @@ class _PricePlanSliderState extends State<PricePlanSlider> {
                                   ),
                                 ),
                                 Transform.translate(
-                                  offset: Offset(0.0,-15),
+                                  offset: const Offset(0.0,-15),
                                   child: CustomText(
                                     title: servicePlan[index]['service_name'],
                                     color: blackColor,
@@ -98,7 +98,7 @@ class _PricePlanSliderState extends State<PricePlanSlider> {
                                 ),
                                 //
                                 Container(
-                                  padding: EdgeInsets.symmetric(horizontal: 18),
+                                  padding: const EdgeInsets.symmetric(horizontal: 18),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
@@ -108,7 +108,7 @@ class _PricePlanSliderState extends State<PricePlanSlider> {
                                         color: blackColor,
                                         fontWeight: FontWeight.w700,
                                       ),
-                                      Icon(Icons.check,color: blackColor,)
+                                      const Icon(Icons.check,color: blackColor,)
                                     ],
                                   ),
                                 ),
@@ -197,7 +197,7 @@ class _PricePlanSliderState extends State<PricePlanSlider> {
                 ),
               ),
             ],
-          ):CircularProgressIndicator();
+          ):const CircularProgressIndicator();
     });
   }
 
@@ -205,11 +205,11 @@ class _PricePlanSliderState extends State<PricePlanSlider> {
     return AnimatedContainer(
       width:currentPage==index? 28:8,
       height: 8,
-      margin: EdgeInsets.only(right: 8),
+      margin: const EdgeInsets.only(right: 8),
       decoration: BoxDecoration(
           color:currentPage==index?whiteColor: greyColor,
           borderRadius: BorderRadius.circular(4)
-      ), duration: Duration(milliseconds: 350),
+      ), duration: const Duration(milliseconds: 350),
     );
   }
 
@@ -224,11 +224,11 @@ class _PricePlanSliderState extends State<PricePlanSlider> {
       setState(() {
         servicePlan = response.data;
       });
-      print("response: ${servicePlan}");
+     // print("response: $servicePlan");
     }else{
       print("Response error");
       ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(
+          .showSnackBar(const SnackBar(content: Text(
         "Please check your Internet Connection", textAlign: TextAlign.center,
         style: TextStyle(color: Colors.white,),),
         behavior: SnackBarBehavior.floating,

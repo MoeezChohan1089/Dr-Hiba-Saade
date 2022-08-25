@@ -27,12 +27,12 @@ class serviceModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['service_name'] = this.serviceName;
-    data['service_description'] = this.serviceDescription;
-    data['service_image'] = this.serviceImage;
-    data['price'] = this.price;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['service_name'] = serviceName;
+    data['service_description'] = serviceDescription;
+    data['service_image'] = serviceImage;
+    data['price'] = price;
     return data;
   }
 }

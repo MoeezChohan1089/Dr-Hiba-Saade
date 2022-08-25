@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:drhibasaade/utilites/constants.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class testMonialSilde extends StatefulWidget{
@@ -15,14 +14,14 @@ class _testMonialSildeState extends State<testMonialSilde> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return ConstrainedBox(
-      constraints: BoxConstraints(maxHeight: 200),
+      constraints: const BoxConstraints(maxHeight: 200),
       child: CarouselSlider(
         options: CarouselOptions(
         height: double.infinity,
         aspectRatio: 16/10,
         viewportFraction: 0.84,
-        autoPlayInterval: Duration(seconds: 3),
-        autoPlayAnimationDuration: Duration(milliseconds: 800),
+        autoPlayInterval: const Duration(seconds: 3),
+        autoPlayAnimationDuration: const Duration(milliseconds: 800),
         autoPlayCurve: Curves.fastOutSlowIn,
         enlargeCenterPage: true,
         scrollDirection: Axis.horizontal,
@@ -50,13 +49,13 @@ class _testMonialSildeState extends State<testMonialSilde> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
+                  padding: const EdgeInsets.all(10),
+                  decoration: const BoxDecoration(
                     border: Border(bottom: BorderSide(color: Colors.white, width: 1,))
                   ),
-                  child: Container(
+                  child: SizedBox(
                     width: MediaQuery.of(context).size.width*0.55,
-                    child: Text(
+                    child: const Text(
                       "This is very gratefull app",
                       style: TextStyle(
                         color: Colors.white,
@@ -65,11 +64,11 @@ class _testMonialSildeState extends State<testMonialSilde> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Container(
-                  child: Text(
+                  child: const Text(
                     "Moeez Chohan",
                     style: TextStyle(
                       color: Colors.white,
@@ -94,13 +93,13 @@ class _testMonialSildeState extends State<testMonialSilde> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
+                  padding: const EdgeInsets.all(10),
+                  decoration: const BoxDecoration(
                       border: Border(bottom: BorderSide(color: Colors.white, width: 1,))
                   ),
-                  child: Container(
+                  child: SizedBox(
                     width: MediaQuery.of(context).size.width*0.55,
-                    child: Text(
+                    child: const Text(
                       "Very Comfortable App And smooth",
                       style: TextStyle(
                         color: Colors.white,
@@ -109,11 +108,11 @@ class _testMonialSildeState extends State<testMonialSilde> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Container(
-                  child: Text(
+                  child: const Text(
                     "Asghar Cheema",
                     style: TextStyle(
                       color: Colors.white,
@@ -133,11 +132,11 @@ class _testMonialSildeState extends State<testMonialSilde> {
     return AnimatedContainer(
       width:currentPage==index? 28:8,
       height: 8,
-      margin: EdgeInsets.only(right: 8),
+      margin: const EdgeInsets.only(right: 8),
       decoration: BoxDecoration(
           color:currentPage==index?whiteColor: greyColor,
           borderRadius: BorderRadius.circular(4)
-      ), duration: Duration(milliseconds: 350),
+      ), duration: const Duration(milliseconds: 350),
     );
   }
 }

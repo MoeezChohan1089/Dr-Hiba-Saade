@@ -3,7 +3,6 @@
 import 'package:dio/dio.dart';
 import 'package:drhibasaade/utilites/constants.dart';
 import 'package:drhibasaade/widgets/custom_text.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AboutPage extends StatefulWidget{
@@ -19,8 +18,8 @@ class _AboutPageState extends State<AboutPage> {
     // TODO: implement initState
 
     Future.delayed(
-      Duration(seconds: 4),
-          () => Center(child: CircularProgressIndicator()),
+      const Duration(seconds: 4),
+          () => const Center(child: CircularProgressIndicator()),
     ).then((value) {
       return ShowAbout();
     });
@@ -32,10 +31,10 @@ class _AboutPageState extends State<AboutPage> {
     // TODO: implement build
     return Scaffold(
       backgroundColor: Colors.white,
-      body: aboutData == null? Center(child: CircularProgressIndicator()) : Column(
+      body: aboutData == null? const Center(child: CircularProgressIndicator()) : Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 15, right: 15),
+          const Padding(
+            padding: EdgeInsets.only(left: 15, right: 15),
             child: Align(
                 alignment: Alignment.bottomLeft,
                 child: Text('About Us of Hiba Saadeh', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),)),
@@ -44,16 +43,16 @@ class _AboutPageState extends State<AboutPage> {
             padding: const EdgeInsets.all(15.0),
             child: Image.network('http://drhibasaadeh.com/media/uploads/2022/04/04/carousel-1_nwymlkm.jpg'),
           ),
-          SizedBox(height: 20,),
+          const SizedBox(height: 20,),
           //location
           Container(
             padding: kHrPadding,
             alignment: Alignment.centerLeft,
             child: Row(
               children: [
-                Icon(Icons.inbox_outlined,color: blackColor,),
+                const Icon(Icons.inbox_outlined,color: blackColor,),
                 //Space
-                SizedBox(width: 20,),
+                const SizedBox(width: 20,),
                 //
                 Expanded(
                     child: Container(
@@ -67,7 +66,7 @@ class _AboutPageState extends State<AboutPage> {
                             fontWeight: FontWeight.w700,
                           ),
                           //Space
-                          SizedBox(height: 5,),
+                          const SizedBox(height: 5,),
                           CustomText(
                             title: aboutData!['add_date'],
                             fontSize: 15,
@@ -81,16 +80,16 @@ class _AboutPageState extends State<AboutPage> {
             ),
           ),
 
-          SizedBox(height: 20,),
+          const SizedBox(height: 20,),
 
           Container(
             padding: kHrPadding,
             alignment: Alignment.centerLeft,
             child: Row(
               children: [
-                Icon(Icons.outbond_outlined,color: blackColor,),
+                const Icon(Icons.outbond_outlined,color: blackColor,),
                 //Space
-                SizedBox(width: 20,),
+                const SizedBox(width: 20,),
                 //
                 Expanded(
                     child: Container(
@@ -104,7 +103,7 @@ class _AboutPageState extends State<AboutPage> {
                             fontWeight: FontWeight.w700,
                           ),
                           //Space
-                          SizedBox(height: 5,),
+                          const SizedBox(height: 5,),
                           CustomText(
                             title: aboutData!['update_date'],
                             fontSize: 15,
@@ -118,7 +117,7 @@ class _AboutPageState extends State<AboutPage> {
             ),
           ),
           //Space
-          SizedBox(height: 20,),
+          const SizedBox(height: 20,),
         ],
       ),
 
@@ -135,7 +134,7 @@ class _AboutPageState extends State<AboutPage> {
     if(response.statusCode == 200){
       aboutData = response.data;
       // map.decoder.toString();
-      print("response Data: ${aboutData}");
+      print("response Data: $aboutData");
       // print("after response: ${}");
       setState(() {
         isLoading = true;
@@ -144,7 +143,7 @@ class _AboutPageState extends State<AboutPage> {
     }else{
       print("Response error");
       ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(
+          .showSnackBar(const SnackBar(content: Text(
         "Please check your Internet Connection", textAlign: TextAlign.center,
         style: TextStyle(color: Colors.white,),),
         behavior: SnackBarBehavior.floating,

@@ -1,13 +1,10 @@
-import 'dart:convert';
 
-import 'package:drhibasaade/Model/serivceModel.dart';
 import 'package:drhibasaade/utilites/constants.dart';
 import 'package:drhibasaade/widgets/Testimonial_slide.dart';
 import 'package:drhibasaade/widgets/custom_button.dart';
 import 'package:drhibasaade/widgets/custom_slider.dart';
 import 'package:drhibasaade/widgets/custom_text.dart';
 import 'package:drhibasaade/widgets/price_plan_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 
@@ -36,11 +33,11 @@ class _HomeState extends State<Home> {
 
     if(response.statusCode == 200){
       showSlider = response.data;
-      print("response slider: ${showSlider}");
+      print("response slider: $showSlider");
     }else{
       print("Response error");
       ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(
+          .showSnackBar(const SnackBar(content: Text(
         "Please check your Internet Connection", textAlign: TextAlign.center,
         style: TextStyle(color: Colors.white,),),
         behavior: SnackBarBehavior.floating,
@@ -55,28 +52,28 @@ class _HomeState extends State<Home> {
     // TODO: implement build
     return Scaffold(
       backgroundColor: Colors.white,
-      body: (showSlider == null)? Center(child: CircularProgressIndicator(),): SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+      body: (showSlider == null)? const Center(child: CircularProgressIndicator(),): SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             //Slider
             Container(
               padding: kHrPadding,
-                child: CustomSlider()),
+                child: const CustomSlider()),
             //Space
-            SizedBox(height: 25,),
+            const SizedBox(height: 25,),
             //
             Container(
               padding: kHrPadding,
               child: Column(
                 children: [
                   Container(
-                    height: MediaQuery.of(context).size.height*0.30,
-                    decoration: BoxDecoration(
+                    height: MediaQuery.of(context).size.height*0.34,
+                    decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(topLeft: Radius.circular(8), topRight: Radius.circular(8)),
                       color: Colors.lightBlueAccent
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: 8,vertical: 15),
+                    padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 15),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -88,7 +85,7 @@ class _HomeState extends State<Home> {
                           fontWeight: FontWeight.bold,
                         ),
                         //Space
-                        SizedBox(height: 20,),
+                        const SizedBox(height: 20,),
                         //
                         Row(
                           children: [
@@ -98,7 +95,7 @@ class _HomeState extends State<Home> {
                               color: whiteColor,
                             ),
                             //Space
-                            SizedBox(width: 5,),
+                            const SizedBox(width: 5,),
                             CustomText(
                               title: "10:00AM - 7:00PM",
                               fontSize: 12,
@@ -108,7 +105,7 @@ class _HomeState extends State<Home> {
                           ],
                         ),
                         //Space
-                        SizedBox(height: 12,),
+                        const SizedBox(height: 12,),
                         //
                         Row(
                           children: [
@@ -118,7 +115,7 @@ class _HomeState extends State<Home> {
                               color: whiteColor,
                             ),
                             //Space
-                            SizedBox(width: 5,),
+                            const SizedBox(width: 5,),
                             CustomText(
                               title: "10:00AM - 4:00PM",
                               fontSize: 12,
@@ -128,7 +125,7 @@ class _HomeState extends State<Home> {
                           ],
                         ),
                         //Space
-                        SizedBox(height: 12,),
+                        const SizedBox(height: 12,),
                         //
                         Row(
                           children: [
@@ -138,7 +135,7 @@ class _HomeState extends State<Home> {
                               color: whiteColor,
                             ),
                             //Space
-                            SizedBox(width: 5,),
+                            const SizedBox(width: 5,),
                             CustomText(
                               title: "10:00AM - 7:00PM",
                               fontSize: 12,
@@ -148,7 +145,7 @@ class _HomeState extends State<Home> {
                           ],
                         ),
 
-                        SizedBox(height: 15,),
+                        const SizedBox(height: 15,),
                         //
                         Container(
                           padding: kHrPadding,
@@ -168,14 +165,14 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                   //Space
-                  SizedBox(width: 8,),
+                  const SizedBox(width: 8,),
                   Container(
                     height: MediaQuery.of(context).size.height*0.30,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(bottomLeft: Radius.circular(8), bottomRight: Radius.circular(8)),
                         color: Colors.redAccent
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: 8,vertical: 15),
+                    padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 15),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -188,7 +185,7 @@ class _HomeState extends State<Home> {
                           overflow: TextOverflow.ellipsis,
                         ),
                         //Space
-                        SizedBox(height: 25,),
+                        const SizedBox(height: 25,),
                         CustomText(
                           title: "Ipsum erat ipsum dolor clita rebum "
                               "no rebum dolores labore, ipsum magna at eos eos amet.",
@@ -196,7 +193,7 @@ class _HomeState extends State<Home> {
                           color: whiteColor,
                         ),
                         //Space
-                        SizedBox(height: 12,),
+                        const SizedBox(height: 12,),
                         CustomText(
                           title: "+962 795258121",
                           fontSize: 18,
@@ -211,7 +208,7 @@ class _HomeState extends State<Home> {
               ),
             ),
             //Space
-            SizedBox(height: 25,),
+            const SizedBox(height: 25,),
             Container(
               padding: kHrPadding,
               alignment: Alignment.centerLeft,
@@ -223,16 +220,16 @@ class _HomeState extends State<Home> {
               ),
             ),
             //Space
-            SizedBox(height: 25,),
+            const SizedBox(height: 25,),
             ListView.builder(
                 padding: kHrPadding,
                 itemCount: 10,
                 shrinkWrap: true,
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 itemBuilder: (context,index){
                   return Container(
                     width: double.infinity,
-                    padding: EdgeInsets.only(bottom: 20),
+                    padding: const EdgeInsets.only(bottom: 20),
                     child: Card(
                       margin: EdgeInsets.zero,
                       elevation: 4,
@@ -246,7 +243,7 @@ class _HomeState extends State<Home> {
                             height: 200,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(8),
-                                image: DecorationImage(
+                                image: const DecorationImage(
                                     fit: BoxFit.cover,
                                     image: AssetImage("assets/images/dentict_img.jpg")
                                 )
@@ -269,7 +266,7 @@ class _HomeState extends State<Home> {
                 }
             ),
             //Space
-            SizedBox(height: 25,),
+            const SizedBox(height: 25,),
             Container(
               padding: kHrPadding,
               alignment: Alignment.centerLeft,
@@ -281,7 +278,7 @@ class _HomeState extends State<Home> {
               ),
             ),
             //Space
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             Container(
               padding: kHrPadding,
               alignment: Alignment.centerLeft,
@@ -293,15 +290,15 @@ class _HomeState extends State<Home> {
               ),
             ),
             //Space
-            SizedBox(height: 25,),
+            const SizedBox(height: 25,),
 
-            PricePlanSlider(),
+            const PricePlanSlider(),
 
             //Space
-            SizedBox(height: 50,),
+            const SizedBox(height: 50,),
 
             testMonialSilde(),
-            SizedBox(height: 30,),
+            const SizedBox(height: 30,),
           ],
         ),
       )

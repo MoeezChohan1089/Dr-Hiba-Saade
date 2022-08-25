@@ -1,4 +1,3 @@
-import 'package:drhibasaade/Screens/About.dart';
 import 'package:drhibasaade/Screens/aboutAppBar.dart';
 import 'package:drhibasaade/Screens/loginPage.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +13,8 @@ class AppDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           UserAccountsDrawerHeader(
-            accountName: Text('Dr.Hiba Saadeh', style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),),
-            accountEmail: Text(''),
+            accountName: const Text('Dr.Hiba Saadeh', style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),),
+            accountEmail: const Text(''),
             currentAccountPicture: CircleAvatar(
               child: Image.asset(
                 'assets/logo.png',
@@ -24,7 +23,7 @@ class AppDrawer extends StatelessWidget {
                 height: 90,
               ),
             ),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.blue,
               image: DecorationImage(
                   fit: BoxFit.fill,
@@ -33,15 +32,15 @@ class AppDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: Icon(Icons.home),
-            title: Text('Home'),
+            leading: const Icon(Icons.home),
+            title: const Text('Home'),
             onTap: () {
               Navigator.of(context).pop();
             },
           ),
           ListTile(
-            leading: Icon(Icons.error_outline),
-            title: Text('About Us'),
+            leading: const Icon(Icons.error_outline),
+            title: const Text('About Us'),
             onTap: (){
               Navigator.push(
                 context,
@@ -50,16 +49,16 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.share),
-            title: Text('Share'),
+            leading: const Icon(Icons.share),
+            title: const Text('Share'),
             onTap: () {
 
             },
           ),
-          Divider(),
+          const Divider(),
           ListTile(
-            leading: Icon(Icons.login_outlined),
-            title: Text('Login'),
+            leading: const Icon(Icons.login_outlined),
+            title: const Text('Login'),
             onTap: (){
               Navigator.push(
                 context,
@@ -67,46 +66,46 @@ class AppDrawer extends StatelessWidget {
               );
             },
           ),
-          Divider(
+          const Divider(
 
           ),
-          Divider(
+          const Divider(
             color: Colors.transparent,
           ),
-          Divider(
+          const Divider(
             color: Colors.transparent,
           ),
-          Divider(
+          const Divider(
             color: Colors.transparent,
           ),
-          Divider(
+          const Divider(
             color: Colors.transparent,
           ),
-          Divider(
+          const Divider(
             color: Colors.transparent,
           ),
-          Divider(
+          const Divider(
             color: Colors.transparent,
           ),
-          Divider(
+          const Divider(
             color: Colors.transparent,
           ),
-          Divider(
+          const Divider(
             color: Colors.transparent,
           ),
 
-          ListTile(
+          const ListTile(
             title: Text('Follow Us', textAlign: TextAlign.center, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
           ),
           ListTile(
-            title: Text('Facebook'),
-            leading: Icon(Icons.facebook_outlined, color: Colors.blue,),
+            title: const Text('Facebook'),
+            leading: const Icon(Icons.facebook_outlined, color: Colors.blue,),
             onTap: () {
               launch('https://hi-in.facebook.com/pg/Dr.HibaSaadeh/videos/');
             },
           ),
           ListTile(
-            title: Text('Instagram'),
+            title: const Text('Instagram'),
             leading: Image.asset('assets/instagram.png', width: 25,),
             onTap: () {
               launch('https://www.instagram.com/dr.hibasaadeh/?utm_medium=copy_link');

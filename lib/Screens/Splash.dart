@@ -19,7 +19,7 @@ class _SplashPageState extends State<SplashPage> {
     _controller.setLooping(true);
     _controller.play();
 
-    Future.delayed(Duration(seconds: 7), () {
+    Future.delayed(const Duration(seconds: 7), () {
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
@@ -42,7 +42,7 @@ class _SplashPageState extends State<SplashPage> {
           children: [
             AnimatedOpacity(
               opacity:1.0 ,
-              duration: Duration(milliseconds: 100),
+              duration: const Duration(milliseconds: 100),
               child: VideoPlayer(_controller),
             )
           ],

@@ -6,11 +6,11 @@ import 'constants.dart';
 
 class Helper {
 
-  static setHeight(BuildContext context, {height: 1}) {
+  static setHeight(BuildContext context, {height = 1}) {
     return MediaQuery.of(context).size.height * height;
   }
 
-  static setWidth(BuildContext context, {width: 1}) {
+  static setWidth(BuildContext context, {width = 1}) {
     return MediaQuery.of(context).size.width * width;
   }
 
@@ -31,11 +31,11 @@ class Helper {
  static  onWillPop(context,screen) {
    Navigator.pushAndRemoveUntil(context, SlideRightToLeft(page: screen), (route) => false);
   }
-  static showSnack(context, message, {color: kPrimaryColor, duration = 2}) {
+  static showSnack(context, message, {color = kPrimaryColor, duration = 2}) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text(
           message,
-          style: TextStyle(fontSize: 14),
+          style: const TextStyle(fontSize: 14),
         ),
         backgroundColor: color,
         duration: Duration(seconds: duration)));

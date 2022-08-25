@@ -10,6 +10,6 @@ class CustomParentWidget extends StatelessWidget {
     queryData = MediaQuery.of(context);
     return MediaQuery(
         data: queryData.copyWith(textScaleFactor: 1.0),
-        child: child ?? SizedBox());
+        child: child ?? const SizedBox());
   }
 }

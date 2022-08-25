@@ -29,7 +29,7 @@ class CustomCircleWidget extends StatelessWidget {
         children: [
           icon!  ,
           //Space
-          SizedBox(height: 6,),
+          const SizedBox(height: 6,),
           CustomText(
             title: title,
             color: titleColor,

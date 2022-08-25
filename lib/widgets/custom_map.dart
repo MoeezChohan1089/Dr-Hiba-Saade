@@ -1,10 +1,8 @@
-import 'dart:async';
 
 import 'package:drhibasaade/provider/location_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:provider/provider.dart';
 class CustomMap extends StatelessWidget {
   LocationHelper? locationHelper;
   Position? position ;
@@ -24,7 +22,7 @@ class CustomMap extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       height: double.infinity,
       child: Stack(

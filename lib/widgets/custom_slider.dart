@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:drhibasaade/utilites/constants.dart';
 import 'package:flutter/material.dart';
 class CustomSlider extends StatefulWidget {
-   CustomSlider({Key? key}) : super(key: key);
+   const CustomSlider({Key? key}) : super(key: key);
 
   @override
   State<CustomSlider> createState() => _CustomSliderState();
@@ -86,11 +86,11 @@ class _CustomSliderState extends State<CustomSlider> {
     return AnimatedContainer(
       width:currentPage==index? 28:8,
       height: 8,
-      margin: EdgeInsets.only(right: 8),
+      margin: const EdgeInsets.only(right: 8),
       decoration: BoxDecoration(
         color:currentPage==index?whiteColor: greyColor,
         borderRadius: BorderRadius.circular(4)
-      ), duration: Duration(milliseconds: 350),
+      ), duration: const Duration(milliseconds: 350),
     );
   }
 
@@ -105,11 +105,11 @@ ShowSlider() async{
     setState((){
       showSlider = response.data;
     });
-    print("response slider: ${showSlider}");
+    print("response slider: $showSlider");
   }else{
     print("Response error");
     ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text(
+        .showSnackBar(const SnackBar(content: Text(
       "Please check your Internet Connection", textAlign: TextAlign.center,
       style: TextStyle(color: Colors.white,),),
       behavior: SnackBarBehavior.floating,

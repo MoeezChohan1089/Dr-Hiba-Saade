@@ -2,7 +2,6 @@ import 'package:before_after/before_after.dart';
 import 'package:dio/dio.dart';
 import 'package:drhibasaade/utilites/constants.dart';
 import 'package:drhibasaade/widgets/custom_text.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ServicePage extends StatefulWidget{
@@ -25,12 +24,12 @@ class _ServicePageState extends State<ServicePage> {
     // TODO: implement build
     return Scaffold(
       backgroundColor: Colors.white,
-      body: (befAfter == null)? Center(child: CircularProgressIndicator(),): SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+      body: (befAfter == null)? const Center(child: CircularProgressIndicator(),): SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             //Space
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             //b
             BeforeAfter(
               beforeImage: Container(
@@ -59,7 +58,7 @@ class _ServicePageState extends State<ServicePage> {
               ),
             ),
             //Space
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             Container(
               padding: kHrPadding,
               alignment: Alignment.centerLeft,
@@ -71,7 +70,7 @@ class _ServicePageState extends State<ServicePage> {
               ),
             ),
             //Space
-            SizedBox(height: 8,),
+            const SizedBox(height: 8,),
             Container(
               padding: kHrPadding,
               alignment: Alignment.centerLeft,
@@ -83,16 +82,16 @@ class _ServicePageState extends State<ServicePage> {
               ),
             ),
             //Space
-            SizedBox(height: 25,),
+            const SizedBox(height: 25,),
             ListView.builder(
                 padding: kHrPadding,
                 itemCount: 10,
                 shrinkWrap: true,
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 itemBuilder: (context,index){
                   return Container(
                     width: double.infinity,
-                    padding: EdgeInsets.only(bottom: 20),
+                    padding: const EdgeInsets.only(bottom: 20),
                     child: Card(
                       margin: EdgeInsets.zero,
                       elevation: 4,
@@ -106,7 +105,7 @@ class _ServicePageState extends State<ServicePage> {
                            height: 200,
                            decoration: BoxDecoration(
                              borderRadius: BorderRadius.circular(8),
-                             image: DecorationImage(
+                             image: const DecorationImage(
                                fit: BoxFit.cover,
                                image: AssetImage("assets/images/dentict_img.jpg")
                              )
@@ -149,7 +148,7 @@ class _ServicePageState extends State<ServicePage> {
     }else{
       print("Response error");
       ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(
+          .showSnackBar(const SnackBar(content: Text(
         "Please check your Internet Connection", textAlign: TextAlign.center,
         style: TextStyle(color: Colors.white,),),
         behavior: SnackBarBehavior.floating,

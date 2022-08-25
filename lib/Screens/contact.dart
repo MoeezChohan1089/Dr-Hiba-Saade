@@ -31,7 +31,7 @@ class _ContactPageState extends State<ContactPage> {
             child: Column(
               children: [
                 //Space
-                SizedBox(height: 20,),
+                const SizedBox(height: 20,),
                 //Feel Free To Contact Us
                 Container(
                   padding: kHrPadding,
@@ -44,16 +44,16 @@ class _ContactPageState extends State<ContactPage> {
                   ),
                 ),
                 //Space
-                SizedBox(height: 20,),
+                const SizedBox(height: 20,),
                 //location
                 Container(
                   padding: kHrPadding,
                   alignment: Alignment.centerLeft,
                   child: Row(
                     children: [
-                      Icon(Icons.location_on,color: blackColor,),
+                      const Icon(Icons.location_on,color: blackColor,),
                       //Space
-                      SizedBox(width: 20,),
+                      const SizedBox(width: 20,),
                       //
                       Expanded(
                           child: Container(
@@ -67,7 +67,7 @@ class _ContactPageState extends State<ContactPage> {
                                   fontWeight: FontWeight.w700,
                                 ),
                                 //Space
-                                SizedBox(height: 5,),
+                                const SizedBox(height: 5,),
                                 CustomText(
                                   title: "Dr. Hiba Saadeh Dental Clinic",
                                   fontSize: 15,
@@ -81,16 +81,16 @@ class _ContactPageState extends State<ContactPage> {
                   ),
                 ),
                 //Space
-                SizedBox(height: 20,),
+                const SizedBox(height: 20,),
                 //Email
                 Container(
                   padding: kHrPadding,
                   alignment: Alignment.centerLeft,
                   child: Row(
                     children: [
-                      Icon(Icons.mail,color: blackColor,),
+                      const Icon(Icons.mail,color: blackColor,),
                       //Space
-                      SizedBox(width: 20,),
+                      const SizedBox(width: 20,),
                       //
                       Expanded(
                           child: Container(
@@ -104,7 +104,7 @@ class _ContactPageState extends State<ContactPage> {
                                   fontWeight: FontWeight.w700,
                                 ),
                                 //Space
-                                SizedBox(height: 5,),
+                                const SizedBox(height: 5,),
                                 CustomText(
                                   title: "info@example.com",
                                   fontSize: 15,
@@ -118,16 +118,16 @@ class _ContactPageState extends State<ContactPage> {
                   ),
                 ),
                 //Space
-                SizedBox(height: 20,),
+                const SizedBox(height: 20,),
                 //Call
                 Container(
                   padding: kHrPadding,
                   alignment: Alignment.centerLeft,
                   child: Row(
                     children: [
-                      Icon(Icons.call,color: blackColor,),
+                      const Icon(Icons.call,color: blackColor,),
                       //Space
-                      SizedBox(width: 20,),
+                      const SizedBox(width: 20,),
                       //
                       Expanded(
                           child: Container(
@@ -141,7 +141,7 @@ class _ContactPageState extends State<ContactPage> {
                                   fontWeight: FontWeight.w700,
                                 ),
                                 //Space
-                                SizedBox(height: 5,),
+                                const SizedBox(height: 5,),
                                 CustomText(
                                   title: "+962 795258121",
                                   fontSize: 15,
@@ -155,7 +155,7 @@ class _ContactPageState extends State<ContactPage> {
                   ),
                 ),
                 //Space
-                SizedBox(height: 30,),
+                const SizedBox(height: 30,),
                 //
                 //Email Address
                 Container(
@@ -175,7 +175,7 @@ class _ContactPageState extends State<ContactPage> {
                     // validation: emailField,
                     hintText: "Your Name",
                     fieldborderRadius: 7,
-                    prefixIcon: Icon(Icons.person,color: greyColor,)
+                    prefixIcon: const Icon(Icons.person,color: greyColor,)
                   ),
                 ),
                 //Space
@@ -198,7 +198,7 @@ class _ContactPageState extends State<ContactPage> {
                       // validation: emailField,
                       hintText: "Your Email",
                       fieldborderRadius: 7,
-                      prefixIcon: Icon(Icons.mail,color: greyColor,)
+                      prefixIcon: const Icon(Icons.mail,color: greyColor,)
                   ),
                 ),
                 //Space
@@ -221,7 +221,7 @@ class _ContactPageState extends State<ContactPage> {
                       // validation: emailField,
                       hintText: "Subject",
                       fieldborderRadius: 7,
-                      prefixIcon: Icon(Icons.accessibility_new_outlined,color: greyColor,)
+                      prefixIcon: const Icon(Icons.accessibility_new_outlined,color: greyColor,)
                   ),
                 ),
                 //Space
@@ -267,7 +267,7 @@ class _ContactPageState extends State<ContactPage> {
                         fontSize: 14,
                       ),
                       //Space
-                      SizedBox(width: 6,),
+                      const SizedBox(width: 6,),
                       Expanded(
                         child: Container(
                           height: 48,
@@ -307,7 +307,7 @@ class _ContactPageState extends State<ContactPage> {
                 const SizedBox(height: 25),
                 //map
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 18),
+                  padding: const EdgeInsets.symmetric(horizontal: 18),
                   child: Container(
                       height: 220,
                       width: double.infinity,

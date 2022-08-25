@@ -140,7 +140,7 @@ class CustomTextField extends StatelessWidget {
         border: isUnderlineInputBorder == false && isOutlineInputBorder == false
             ? InputBorder.none
             : isOutlineInputBorder == false
-                ? UnderlineInputBorder(borderSide: BorderSide(width: 1, color: greyColor))
+                ? const UnderlineInputBorder(borderSide: BorderSide(width: 1, color: greyColor))
                 : OutlineInputBorder(
                     borderSide: BorderSide(width: isOutlineInputBorderColor != null ? 0 : 1, color: isOutlineInputBorderColor ?? Colors.grey),
                     borderRadius: BorderRadius.only(
@@ -152,7 +152,7 @@ class CustomTextField extends StatelessWidget {
         enabledBorder: isUnderlineInputBorder == false && isOutlineInputBorder == false
             ? InputBorder.none
             : isOutlineInputBorder == false
-                ? UnderlineInputBorder(borderSide: BorderSide(width: 1, color: greyColor))
+                ? const UnderlineInputBorder(borderSide: BorderSide(width: 1, color: greyColor))
                 : OutlineInputBorder(
                     borderSide: BorderSide(width: isOutlineInputBorderColor != null ? 0 : 1, color: isOutlineInputBorderColor ?? Colors.grey),
                     borderRadius: BorderRadius.only(
@@ -164,7 +164,7 @@ class CustomTextField extends StatelessWidget {
         focusedBorder: isUnderlineInputBorder == false && isOutlineInputBorder == false
             ? InputBorder.none
             : isOutlineInputBorder == false
-                ? UnderlineInputBorder(borderSide: BorderSide(width: 1, color: greyColor))
+                ? const UnderlineInputBorder(borderSide: BorderSide(width: 1, color: greyColor))
                 : OutlineInputBorder(
                     borderSide: BorderSide(width: isOutlineInputBorderColor != null ? 0 : 1, color: isOutlineInputBorderColor ?? Colors.grey),
                     borderRadius: BorderRadius.only(
@@ -176,7 +176,7 @@ class CustomTextField extends StatelessWidget {
         errorBorder: isUnderlineInputBorder == false && isOutlineInputBorder == false
             ? InputBorder.none
             : isOutlineInputBorder == false
-                ? UnderlineInputBorder(borderSide: BorderSide(width: 1, color: greyColor))
+                ? const UnderlineInputBorder(borderSide: BorderSide(width: 1, color: greyColor))
                 : OutlineInputBorder(
                     borderSide: BorderSide(width: isOutlineInputBorderColor != null ? 0 : 1, color: redColor),
                     borderRadius: BorderRadius.only(
@@ -188,7 +188,7 @@ class CustomTextField extends StatelessWidget {
         disabledBorder: isUnderlineInputBorder == false && isOutlineInputBorder == false
             ? InputBorder.none
             : isOutlineInputBorder == false
-                ? UnderlineInputBorder(borderSide: BorderSide(width: 1, color: greyColor))
+                ? const UnderlineInputBorder(borderSide: BorderSide(width: 1, color: greyColor))
                 : OutlineInputBorder(
                     borderSide: BorderSide(width: isOutlineInputBorderColor != null ? 0 : 1, color: redColor),
                     borderRadius: BorderRadius.only(

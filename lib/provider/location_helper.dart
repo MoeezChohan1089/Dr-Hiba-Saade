@@ -85,8 +85,8 @@ class LocationHelper with ChangeNotifier {
         position!.longitude,
         localeIdentifier: "en"
     );
-    address =placemarks[0].locality.toString() +", "+placemarks[0].country.toString();
-       address2 = placemarks[0].street.toString() +", "+placemarks[0].locality.toString();
+    address ="${placemarks[0].locality}, ${placemarks[0].country}";
+       address2 = "${placemarks[0].street}, ${placemarks[0].locality}";
     _isLoading = false;
     notifyListeners();
   }
@@ -100,7 +100,7 @@ class LocationHelper with ChangeNotifier {
     var first = locations.first;
     print("${first.latitude} : ${first.longitude}");
     CameraPosition position1 = CameraPosition(target: LatLng(first.latitude,first.longitude), zoom: 16.0,);
-    GoogleMapController? controller = await mapController;
+    GoogleMapController? controller = mapController;
     controller!.animateCamera(CameraUpdate.newCameraPosition(position1));
     List<geocoding.Placemark>? placemarks;
     placemarks = await geocoding.GeocodingPlatform.instance.placemarkFromCoordinates(
@@ -108,7 +108,7 @@ class LocationHelper with ChangeNotifier {
         first.longitude,
         localeIdentifier: "en"
     );
-    address2 =placemarks[0].street.toString() +", "+placemarks[0].locality.toString();
+    address2 ="${placemarks[0].street}, ${placemarks[0].locality}";
     notifyListeners();
   }
 
@@ -118,7 +118,7 @@ class LocationHelper with ChangeNotifier {
         .then((Position position) async {
       markers.clear();
       CameraPosition position1 = CameraPosition(target: LatLng(position.latitude,position.longitude), zoom: 16.0,);
-      GoogleMapController? controller = await mapController;
+      GoogleMapController? controller = mapController;
       controller!.animateCamera(CameraUpdate.newCameraPosition(position1));
     }).catchError((e) {
       print(e);
@@ -133,17 +133,17 @@ class LocationHelper with ChangeNotifier {
 
   Set<Marker> markers = HashSet<Marker>();
   BitmapDescriptor? markerIcon;
-  int _markerIdCounter = 1;
+  final int _markerIdCounter = 1;
   void _setMarkers(LatLng point) {
     final String markerIdVal = 'marker_id_$_markerIdCounter';
     //   _markerIdCounter++;
     //  print('Marker | Latitude: ${point.latitude}  Longitude: ${point.longitude}');
-    markers.add(Marker(markerId: MarkerId("1"), position: point,icon: markerIcon!));
+    markers.add(Marker(markerId: const MarkerId("1"), position: point,icon: markerIcon!));
     notifyListeners();
   }
 
   void setMarkerIcon() async {
-    markerIcon = await BitmapDescriptor.fromAssetImage(ImageConfiguration(), 'assets/icons/marker.png');
+    markerIcon = await BitmapDescriptor.fromAssetImage(const ImageConfiguration(), 'assets/icons/marker.png');
     notifyListeners();
   }
 

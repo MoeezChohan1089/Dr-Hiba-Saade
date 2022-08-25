@@ -73,7 +73,7 @@ class CustomButton extends StatelessWidget {
                 bottom: 0,
                 top: 0,
                 child: widget!):
-            SizedBox(),
+            const SizedBox(),
           ],
         ),
       ),
