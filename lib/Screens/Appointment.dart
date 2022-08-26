@@ -19,7 +19,17 @@ class _AppointmentPageState extends State<AppointmentPage> {
   TextEditingController timeController = TextEditingController();
 
   @override
+  void initState() {
+    getSlot();
+    super.initState();
+  }
+  getSlot()async{
+    await getSlotService();
+    setState((){});
+  }
+  @override
   Widget build(BuildContext context) {
+   // print(slotData[0]["time"]);
     // TODO: implement build
     return Scaffold(
       backgroundColor: Colors.white,
@@ -232,7 +242,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
                       mobileNumber: mobileController.text,
                       emailId: emailController.text,
                       appointDate: dateController.text,
-                      appointSlotId: timeController.text,
+                      appointSlotId: slotData[0]["id"].toString(),
                     );
                   },
                   btnHeight: 48,
@@ -274,6 +284,53 @@ class _AppointmentPageState extends State<AppointmentPage> {
       print("Time is not selected");
     }
   }
+//
+  var slotData;
+  bool isLoading2 = false;
+  getSlotService({
+    String? appointDate,
+  }) async{
+    Dio dio = Dio();
+    setState((){
+      isLoading2 = true;
+    });
+    Response response = await dio.get('http://drhibasaadeh.com/api/patients/appointmentSlot/2022-03-28/slot/',
+        options: Options(headers: {
+          'Content-Type': 'application/json',
+          "Authorization": "Bearer 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b",
+          "Cookie": "csrftoken=96SAAzBY9QG1LVADZLGDkKDFsYpqQ50vZHGZZjOQ6vNfI211OpgMMJ6sd7zFQSSQ; sessionid=dahek6b61n15egs09dhx6ej7x979pq97"
+        }),
+    );
+
+    if(response.statusCode == 200){
+      slotData = response.data;
+      // map.decoder.toString();
+      print("response Data: ${slotData}");
+      //   print("after response: ${}");
+      setState(() {
+        isLoading2 = false;
+       // Navigator.pop(context);
+        //   print("after response Data: ${servicePlan}");
+      });
+    }else{
+      print("Response error");
+      setState(() {
+        isLoading2 = false;
+        // Navigator.pop(context);
+        //   print("after response Data: ${servicePlan}");
+      });
+      print("response Data: ${slotData}");
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text(
+        "Please check your Internet Connection", textAlign: TextAlign.center,
+        style: TextStyle(color: Colors.white,),),
+        behavior: SnackBarBehavior.floating,
+        elevation: 0,
+        backgroundColor: Color(0xff666666),
+        duration: Duration(milliseconds: 1000),));
+    }
+  }
+
 
   Map? appointData;
   bool isLoading = false;
@@ -295,7 +352,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
       "mobile_no" : mobileNumber,
       "email_id" : emailId,
       "appoint_date": appointDate,
-      "app_slot_id": "10"
+      "app_slot_id": appointSlotId
     };
     Response response = await dio.post('http://drhibasaadeh.com/api/patients/appointment/',
       options: Options(headers: {
