@@ -34,17 +34,17 @@ class _AppointmentPageState extends State<AppointmentPage> {
    // print(slotData[0]["time"]);
     // TODO: implement build
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xFF010a41),
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor:Color(0xFF010a41),
         elevation: 0,
-        title: const Text("Appointment", style: TextStyle(color: Colors.black),),
+        title: const Text("Appointment", style: TextStyle(color: Colors.white),),
         centerTitle: true,
         leading: IconButton(
           onPressed: (){
             Navigator.of(context).pop();
           },
-          icon: const Icon(Icons.arrow_back, color: Colors.black,),
+          icon: const Icon(Icons.arrow_back, color: Colors.white,),
         ),
       ),
       body: SingleChildScrollView(
@@ -59,232 +59,249 @@ class _AppointmentPageState extends State<AppointmentPage> {
               Container(
                 padding: const EdgeInsets.all(18),
                 alignment: Alignment.center,
-                child: const Text("We Are A Certified And Award Winning Dental Clinic You Can Trust.", textAlign: TextAlign.center,style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                child: const Text("We Are A Certified And Award Winning Dental Clinic You Can Trust.",
+                  textAlign: TextAlign.center,style: TextStyle(fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    color: Colors.white
+                  ),),
               ),
               const SizedBox(
-                height: 30,
+                height: 15,
               ),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 18),
-                child: CustomTextField(
-                  controller: fNameController,
-                  //validation: loginEmailField,
-                    keyboardType: TextInputType.name,
-                    textInputAction: TextInputAction.next,
-                    isOutlineInputBorder: true,
-                    isOutlineInputBorderColor: kPrimaryColor,
-                    textColor: blackColor,
-                    textFieldFillColor: mediumBlueColor,
-                    onChanged: (_) {
-                      return null;
-                    },
-                    // validation: emailField,
-                    hintText: "First Name",
-                    fieldborderRadius: 7,
-                    prefixIcon: const Icon(Icons.person,color: greyColor,)
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 18),
-                child: CustomTextField(
-                  controller: lNameController,
-                  //validation: loginEmailField,
-                    keyboardType: TextInputType.name,
-                    textInputAction: TextInputAction.next,
-                    isOutlineInputBorder: true,
-                    isOutlineInputBorderColor: kPrimaryColor,
-                    textColor: blackColor,
-                    textFieldFillColor: mediumBlueColor,
-                    onChanged: (_) {
-                      return null;
-                    },
-                    // validation: emailField,
-                    hintText: "Last Name",
-                    fieldborderRadius: 7,
-                    prefixIcon: const Icon(Icons.person,color: greyColor,)
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 18),
-                child: CustomTextField(
-                  controller: mobileController,
-                  //validation: loginEmailField,
-                    keyboardType: TextInputType.number,
-                    textInputAction: TextInputAction.next,
-                    isOutlineInputBorder: true,
-                    isOutlineInputBorderColor: kPrimaryColor,
-                    textColor: blackColor,
-                    textFieldFillColor: mediumBlueColor,
-                    onChanged: (_) {
-                      return null;
-                    },
-                    // validation: emailField,
-                    hintText: "Your Mobile No",
-                    fieldborderRadius: 7,
-                    prefixIcon: const Icon(Icons.mobile_friendly,color: greyColor,)
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 18),
-                child: CustomTextField(
-                  controller: emailController,
-                  //validation: loginEmailField,
-                    keyboardType: TextInputType.emailAddress,
-                    textInputAction: TextInputAction.next,
-                    isOutlineInputBorder: true,
-                    isOutlineInputBorderColor: kPrimaryColor,
-                    textColor: blackColor,
-                    textFieldFillColor: mediumBlueColor,
-                    onChanged: (_) {
-                      return null;
-                    },
-                    // validation: emailField,
-                    hintText: "Your Email",
-                    fieldborderRadius: 7,
-                    prefixIcon: const Icon(Icons.mail,color: greyColor,)
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 18),
-                child: CustomTextField(
-                    controller: dateController,
-                    //validation: loginEmailField,
-                    //   keyboardType: TextInputType.datetime,
-                    textInputAction: TextInputAction.next,
-                    readOnly: true,
-                    isOutlineInputBorder: true,
-                    isOutlineInputBorderColor: kPrimaryColor,
-                    textColor: blackColor,
-                    textFieldFillColor: mediumBlueColor,
-                    onTap: () async{
-                      FocusScope.of(context).requestFocus(FocusNode());
-                      DateTime? pickedDate = await showDatePicker(
-                          context: context, initialDate: DateTime.now(),
-                          firstDate: DateTime(2000), //DateTime.now() - not to allow to choose before today.
-                          lastDate: DateTime(2101)
-                      );
+           Container(
+             width: double.infinity,
+             decoration: BoxDecoration(
+               color: Color(0xFF06a3da)
+             ),
+             child: Column(
+               children: [
+                 const SizedBox(
+                   height: 15,
+                 ),
+                 Container(
+                   padding: const EdgeInsets.symmetric(horizontal: 18),
+                   child: CustomTextField(
+                       controller: fNameController,
+                       //validation: loginEmailField,
+                       keyboardType: TextInputType.name,
+                       textInputAction: TextInputAction.next,
+                       isOutlineInputBorder: true,
+                       isOutlineInputBorderColor: kPrimaryColor,
+                       textColor: blackColor,
+                       textFieldFillColor: mediumBlueColor,
+                       onChanged: (_) {
+                         return null;
+                       },
+                       // validation: emailField,
+                       hintText: "First Name",
+                       fieldborderRadius: 7,
+                       prefixIcon: const Icon(Icons.person,color: greyColor,)
+                   ),
+                 ),
+                 const SizedBox(
+                   height: 20,
+                 ),
+                 Container(
+                   padding: const EdgeInsets.symmetric(horizontal: 18),
+                   child: CustomTextField(
+                       controller: lNameController,
+                       //validation: loginEmailField,
+                       keyboardType: TextInputType.name,
+                       textInputAction: TextInputAction.next,
+                       isOutlineInputBorder: true,
+                       isOutlineInputBorderColor: kPrimaryColor,
+                       textColor: blackColor,
+                       textFieldFillColor: mediumBlueColor,
+                       onChanged: (_) {
+                         return null;
+                       },
+                       // validation: emailField,
+                       hintText: "Last Name",
+                       fieldborderRadius: 7,
+                       prefixIcon: const Icon(Icons.person,color: greyColor,)
+                   ),
+                 ),
+                 const SizedBox(
+                   height: 20,
+                 ),
+                 Container(
+                   padding: const EdgeInsets.symmetric(horizontal: 18),
+                   child: CustomTextField(
+                       controller: mobileController,
+                       //validation: loginEmailField,
+                       keyboardType: TextInputType.number,
+                       textInputAction: TextInputAction.next,
+                       isOutlineInputBorder: true,
+                       isOutlineInputBorderColor: kPrimaryColor,
+                       textColor: blackColor,
+                       textFieldFillColor: mediumBlueColor,
+                       onChanged: (_) {
+                         return null;
+                       },
+                       // validation: emailField,
+                       hintText: "Your Mobile No",
+                       fieldborderRadius: 7,
+                       prefixIcon: const Icon(Icons.mobile_friendly,color: greyColor,)
+                   ),
+                 ),
+                 const SizedBox(
+                   height: 20,
+                 ),
+                 Container(
+                   padding: const EdgeInsets.symmetric(horizontal: 18),
+                   child: CustomTextField(
+                       controller: emailController,
+                       //validation: loginEmailField,
+                       keyboardType: TextInputType.emailAddress,
+                       textInputAction: TextInputAction.next,
+                       isOutlineInputBorder: true,
+                       isOutlineInputBorderColor: kPrimaryColor,
+                       textColor: blackColor,
+                       textFieldFillColor: mediumBlueColor,
+                       onChanged: (_) {
+                         return null;
+                       },
+                       // validation: emailField,
+                       hintText: "Your Email",
+                       fieldborderRadius: 7,
+                       prefixIcon: const Icon(Icons.mail,color: greyColor,)
+                   ),
+                 ),
+                 const SizedBox(
+                   height: 20,
+                 ),
+                 Container(
+                   padding: const EdgeInsets.symmetric(horizontal: 18),
+                   child: CustomTextField(
+                       controller: dateController,
+                       //validation: loginEmailField,
+                       //   keyboardType: TextInputType.datetime,
+                       textInputAction: TextInputAction.next,
+                       readOnly: true,
+                       isOutlineInputBorder: true,
+                       isOutlineInputBorderColor: kPrimaryColor,
+                       textColor: blackColor,
+                       textFieldFillColor: mediumBlueColor,
+                       onTap: () async{
+                         FocusScope.of(context).requestFocus(FocusNode());
+                         DateTime? pickedDate = await showDatePicker(
+                             context: context, initialDate: DateTime.now(),
+                             firstDate: DateTime(2000), //DateTime.now() - not to allow to choose before today.
+                             lastDate: DateTime(2101)
+                         );
 
-                      // setState(() {
-                      //   dateController.text = pickedDate.;
-                      // });
-                      if(pickedDate != null ){
-                        print(pickedDate);  //pickedDate output format => 2021-03-10 00:00:00.000
-                        String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
-                        print(formattedDate);
-                        //you can implement different kind of Date Format here according to your requirement
+                         // setState(() {
+                         //   dateController.text = pickedDate.;
+                         // });
+                         if(pickedDate != null ){
+                           print(pickedDate);  //pickedDate output format => 2021-03-10 00:00:00.000
+                           String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
+                           print(formattedDate);
+                           //you can implement different kind of Date Format here according to your requirement
 
-                        setState(() {
-                          dateController.text = formattedDate; //set output date to TextField value.
+                           setState(() {
+                             dateController.text = formattedDate; //set output date to TextField value.
 
-                        });
-                      }else{
-                        print("Date is not selected");
-                      }
-                    },
-                    onChanged: (_) {
-                      return null;
-                    },
-                    // validation: emailField,
-                    hintText: "Appointment Date",
-                    fieldborderRadius: 7,
-                    prefixIcon: const Icon(Icons.date_range_outlined,color: greyColor,)
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              // Container(
-              //   padding: const EdgeInsets.symmetric(horizontal: 18),
-              //   child: CustomTextField(
-              //        controller: timeController,
-              //       //validation: loginEmailField,
-              //       //   keyboardType: TextInputType.datetime,
-              //       textInputAction: TextInputAction.next,
-              //       readOnly: true,
-              //       isOutlineInputBorder: true,
-              //       isOutlineInputBorderColor: kPrimaryColor,
-              //       textColor: blackColor,
-              //       textFieldFillColor: mediumBlueColor,
-              //       onTap: () async{
-              //         FocusScope.of(context).requestFocus(FocusNode());
-              //         _selectTime(context);
-              //       },
-              //       onChanged: (_) {
-              //         return null;
-              //       },
-              //       // validation: emailField,
-              //       hintText: "Time",
-              //       fieldborderRadius: 7,
-              //       prefixIcon: const Icon(Icons.access_time,color: greyColor,)
-              //   ),
-              // ),
+                           });
+                         }else{
+                           print("Date is not selected");
+                         }
+                       },
+                       onChanged: (_) {
+                         return null;
+                       },
+                       // validation: emailField,
+                       hintText: "Appointment Date",
+                       fieldborderRadius: 7,
+                       prefixIcon: const Icon(Icons.date_range_outlined,color: greyColor,)
+                   ),
+                 ),
+                 const SizedBox(
+                   height: 20,
+                 ),
+                 // Container(
+                 //   padding: const EdgeInsets.symmetric(horizontal: 18),
+                 //   child: CustomTextField(
+                 //        controller: timeController,
+                 //       //validation: loginEmailField,
+                 //       //   keyboardType: TextInputType.datetime,
+                 //       textInputAction: TextInputAction.next,
+                 //       readOnly: true,
+                 //       isOutlineInputBorder: true,
+                 //       isOutlineInputBorderColor: kPrimaryColor,
+                 //       textColor: blackColor,
+                 //       textFieldFillColor: mediumBlueColor,
+                 //       onTap: () async{
+                 //         FocusScope.of(context).requestFocus(FocusNode());
+                 //         _selectTime(context);
+                 //       },
+                 //       onChanged: (_) {
+                 //         return null;
+                 //       },
+                 //       // validation: emailField,
+                 //       hintText: "Time",
+                 //       fieldborderRadius: 7,
+                 //       prefixIcon: const Icon(Icons.access_time,color: greyColor,)
+                 //   ),
+                 // ),
 
-              slotData.length==0?
-              SizedBox():Container(
-                padding: EdgeInsets.symmetric(horizontal: 18),
-                child: Wrap(
-                  spacing: 12,
-                  runSpacing: 12,
-                  children: List.generate(slotData.length, (index){
-                    return  CustomButton(
-                      onPressed: () {
-                        setState((){
-                          tapIndex = index;
-                          slotId = slotData[index]["id"].toString();
-                          print(slotId);
-                        });
-                      },
-                      btnHeight: 48,
-                      btnWidth: MediaQuery.of(context).size.width*0.3-20,
-                      btnRadius: 7,
-                      title: slotData[index]["time"],
-                      fontWeight: FontWeight.w600,
-                      btnColor: tapIndex==index?Colors.blueAccent:Colors.grey,
-                      textColor: whiteColor,
-                      fontSize: 14,
-                    );
-                  })
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Container(
-                padding: kHrPadding,
-                child:isLoading?
-                Center(child: CircularProgressIndicator()):
-                CustomButton(
-                  onPressed: () {
-                    appointmentService(
-                      fName: fNameController.text,
-                      lName: lNameController.text,
-                      mobileNumber: mobileController.text,
-                      emailId: emailController.text,
-                      appointDate: dateController.text,
-                      appointSlotId: slotId,
-                    );
-                  },
-                  btnHeight: 48,
-                  btnRadius: 7,
-                  title: 'Make Appointment',
-                  fontWeight: FontWeight.w600,
-                  btnColor: Colors.blueAccent,
-                  textColor: whiteColor,
-                  fontSize: 14,
-                ),
-              ),
+                 slotData.length==0?
+                 SizedBox():Container(
+                   padding: EdgeInsets.symmetric(horizontal: 18),
+                   child: Wrap(
+                       spacing: 12,
+                       runSpacing: 12,
+                       children: List.generate(slotData.length, (index){
+                         return  CustomButton(
+                           onPressed: () {
+                             setState((){
+                               tapIndex = index;
+                               slotId = slotData[index]["id"].toString();
+                               print(slotId);
+                             });
+                           },
+                           btnHeight: 48,
+                           btnWidth: MediaQuery.of(context).size.width*0.3-20,
+                           btnRadius: 7,
+                           title: slotData[index]["time"],
+                           fontWeight: FontWeight.w600,
+                           btnColor: tapIndex==index?Color(0xFF010a41):Colors.grey,
+                           textColor: whiteColor,
+                           fontSize: 14,
+                         );
+                       })
+                   ),
+                 ),
+                 const SizedBox(
+                   height: 20,
+                 ),
+                 Container(
+                   padding: kHrPadding,
+                   child:isLoading?
+                   Center(child: CircularProgressIndicator()):
+                   CustomButton(
+                     onPressed: () {
+                       appointmentService(
+                         fName: fNameController.text,
+                         lName: lNameController.text,
+                         mobileNumber: mobileController.text,
+                         emailId: emailController.text,
+                         appointDate: dateController.text,
+                         appointSlotId: slotId,
+                       );
+                     },
+                     btnHeight: 48,
+                     btnRadius: 7,
+                     title: 'Make Appointment',
+                     fontWeight: FontWeight.w600,
+                     btnColor: Colors.blueAccent,
+                     textColor: whiteColor,
+                     fontSize: 14,
+                   ),
+                 ),
+               ],
+             ),
+           )
             ],
           ),
         ),

@@ -5,7 +5,9 @@ import 'package:drhibasaade/widgets/custom_map.dart';
 import 'package:drhibasaade/widgets/custom_text.dart';
 import 'package:drhibasaade/widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactPage extends StatefulWidget{
   @override
@@ -19,7 +21,19 @@ class _ContactPageState extends State<ContactPage> {
     super.initState();
     //  Provider.of<LocationHelper>(context,listen: false).autogetInit();
     var   locationHelper =  Provider.of<LocationHelper>(context,listen: false);
-    locationHelper.getGeoLocationPosition();
+    locationHelper!.getAddressFromLatLong(
+        p:
+        Position(
+            longitude:31.975697,
+            latitude: 35.8594,
+            timestamp: DateTime.now(),
+            accuracy: 0,
+            altitude: 1,
+            heading: 0,
+            speed: 0,
+            speedAccuracy: 1));
+    setState((){});
+
   }
   @override
   Widget build(BuildContext context) {
@@ -309,15 +323,61 @@ class _ContactPageState extends State<ContactPage> {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 18),
                   child: Container(
-                      height: 220,
+                      height: 400,
                       width: double.infinity,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(6)
                       ),
                       clipBehavior: Clip.hardEdge,
-                      child: CustomMap(
-                        locationHelper: locationHelper,
-                        position: locationHelper.position,
+                      child: Stack(
+                        children: [
+                          CustomMap(
+                            locationHelper: locationHelper,
+                            position: locationHelper.position,
+                          ),
+                          Positioned.directional(
+                            textDirection: Directionality.of(context),
+                            child:  Card(
+                              margin: EdgeInsets.zero,
+                              elevation: 3,
+                              child: Container(
+                                height: 100,
+                                width: MediaQuery.of(context).size.width*0.6,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(7)
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text("Dr. Hiba Saadeh Dental Clinic", style: TextStyle(fontSize: 16),),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text(locationHelper.address),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text("5.0 Stars"),
+                                    SizedBox(
+                                      height: 8,
+                                    ),
+                                    GestureDetector(
+                                        onTap: (){
+                                          launch('https://www.google.com/maps?ll=31.975697,35.8594&z=14&t=m&hl=en&gl=IN&mapclient=embed&cid=10673224811753364638');
+                                        },
+                                        child: Text("View larger map", style: TextStyle(color: Colors.blueAccent),)),
+                                  ],
+                                ),
+                              ),
+                            ),),
+
+                          Center(child: Image.asset("assets/images/ic_location.png",scale: 13,)),
+                        ],
                       )),
                 ),
                 //Space

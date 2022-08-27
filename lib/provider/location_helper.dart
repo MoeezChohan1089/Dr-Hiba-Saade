@@ -62,30 +62,28 @@ class LocationHelper with ChangeNotifier {
         forceAndroidLocationManager: false)
         .then((position) {
       this.position = position;
-      getAddressFromLatLong(position,isFirstTime: isFirstTime!,context: context);
+      getAddressFromLatLong(p:position,isFirstTime: isFirstTime!,context: context);
 
     //  notifyListeners();
       return null;
     });
   }
   //
-  Future<void> getAddressFromLatLong(Position p, {bool isFirstTime = false,BuildContext? context}) async {
-    print('sdsadd ${p.latitude} ${p.longitude}');
+  Future<void> getAddressFromLatLong({Position? p,bool isFirstTime = false,BuildContext? context}) async {
+    print('sdsadd ${p!.latitude} ${p.longitude}');
     position = p;
     startLocation = LatLng(position!.latitude, position!.longitude);
     cameraPosition = CameraPosition(
         target:
-        LatLng(
-            position!.latitude,
-            position!.longitude),
+        LatLng(31.975697,35.8594),
         zoom: 18.0);
     List<geocoding.Placemark>? placemarks;
     placemarks = await geocoding.GeocodingPlatform.instance.placemarkFromCoordinates(
-        position!.latitude,
-        position!.longitude,
+        31.975697,
+        35.8594,
         localeIdentifier: "en"
     );
-    address ="${placemarks[0].locality}, ${placemarks[0].country}";
+    address ="${placemarks[0].street}, ${placemarks[0].locality}, ${placemarks[0].country}";
        address2 = "${placemarks[0].street}, ${placemarks[0].locality}";
     _isLoading = false;
     notifyListeners();
@@ -99,16 +97,16 @@ class LocationHelper with ChangeNotifier {
     List<geocoding.Location> locations = await geocoding.locationFromAddress(query);
     var first = locations.first;
     print("${first.latitude} : ${first.longitude}");
-    CameraPosition position1 = CameraPosition(target: LatLng(first.latitude,first.longitude), zoom: 16.0,);
+    CameraPosition position1 = CameraPosition(target: LatLng(31.975697,35.8594), zoom: 16.0,);
     GoogleMapController? controller = mapController;
     controller!.animateCamera(CameraUpdate.newCameraPosition(position1));
     List<geocoding.Placemark>? placemarks;
     placemarks = await geocoding.GeocodingPlatform.instance.placemarkFromCoordinates(
-        first.latitude,
-        first.longitude,
+        position1.target.latitude,
+        position1.target.longitude,
         localeIdentifier: "en"
     );
-    address2 ="${placemarks[0].street}, ${placemarks[0].locality}";
+    address ="${placemarks[0].street}, ${placemarks[0].locality}, ${placemarks[0].country}";
     notifyListeners();
   }
 

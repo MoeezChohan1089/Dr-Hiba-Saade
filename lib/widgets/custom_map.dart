@@ -28,7 +28,7 @@ class CustomMap extends StatelessWidget {
       child: Stack(
           children: [
             GoogleMap(
-              initialCameraPosition:locationHelper!.cameraPosition!,
+              initialCameraPosition:CameraPosition(target:LatLng(31.975697,35.8594), zoom: 16.0,),
               // CameraPosition(
               //   target: widget.locationHelper!.startLocation!,
               //   zoom: 16.0,),
@@ -50,6 +50,7 @@ class CustomMap extends StatelessWidget {
               },
               onCameraIdle: () async {
                 locationHelper!.getAddressFromLatLong(
+                  p:
                     Position(
                     longitude: cameraPosition!.target.longitude,
                     latitude: cameraPosition!.target.latitude,
