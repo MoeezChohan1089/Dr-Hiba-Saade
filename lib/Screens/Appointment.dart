@@ -27,6 +27,8 @@ class _AppointmentPageState extends State<AppointmentPage> {
     await getSlotService();
     setState((){});
   }
+  int tapIndex=0;
+  String slotId="1";
   @override
   Widget build(BuildContext context) {
    // print(slotData[0]["time"]);
@@ -185,6 +187,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
 
                         setState(() {
                           dateController.text = formattedDate; //set output date to TextField value.
+
                         });
                       }else{
                         print("Date is not selected");
@@ -202,29 +205,57 @@ class _AppointmentPageState extends State<AppointmentPage> {
               const SizedBox(
                 height: 20,
               ),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 18),
-                child: CustomTextField(
-                     controller: timeController,
-                    //validation: loginEmailField,
-                    //   keyboardType: TextInputType.datetime,
-                    textInputAction: TextInputAction.next,
-                    readOnly: true,
-                    isOutlineInputBorder: true,
-                    isOutlineInputBorderColor: kPrimaryColor,
-                    textColor: blackColor,
-                    textFieldFillColor: mediumBlueColor,
-                    onTap: () async{
-                      FocusScope.of(context).requestFocus(FocusNode());
-                      _selectTime(context);
-                    },
-                    onChanged: (_) {
-                      return null;
-                    },
-                    // validation: emailField,
-                    hintText: "Time",
-                    fieldborderRadius: 7,
-                    prefixIcon: const Icon(Icons.access_time,color: greyColor,)
+              // Container(
+              //   padding: const EdgeInsets.symmetric(horizontal: 18),
+              //   child: CustomTextField(
+              //        controller: timeController,
+              //       //validation: loginEmailField,
+              //       //   keyboardType: TextInputType.datetime,
+              //       textInputAction: TextInputAction.next,
+              //       readOnly: true,
+              //       isOutlineInputBorder: true,
+              //       isOutlineInputBorderColor: kPrimaryColor,
+              //       textColor: blackColor,
+              //       textFieldFillColor: mediumBlueColor,
+              //       onTap: () async{
+              //         FocusScope.of(context).requestFocus(FocusNode());
+              //         _selectTime(context);
+              //       },
+              //       onChanged: (_) {
+              //         return null;
+              //       },
+              //       // validation: emailField,
+              //       hintText: "Time",
+              //       fieldborderRadius: 7,
+              //       prefixIcon: const Icon(Icons.access_time,color: greyColor,)
+              //   ),
+              // ),
+
+              slotData.length==0?
+              SizedBox():Container(
+                padding: EdgeInsets.symmetric(horizontal: 18),
+                child: Wrap(
+                  spacing: 12,
+                  runSpacing: 12,
+                  children: List.generate(slotData.length, (index){
+                    return  CustomButton(
+                      onPressed: () {
+                        setState((){
+                          tapIndex = index;
+                          slotId = slotData[index]["id"].toString();
+                          print(slotId);
+                        });
+                      },
+                      btnHeight: 48,
+                      btnWidth: MediaQuery.of(context).size.width*0.3-20,
+                      btnRadius: 7,
+                      title: slotData[index]["time"],
+                      fontWeight: FontWeight.w600,
+                      btnColor: tapIndex==index?Colors.blueAccent:Colors.grey,
+                      textColor: whiteColor,
+                      fontSize: 14,
+                    );
+                  })
                 ),
               ),
               const SizedBox(
@@ -242,7 +273,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
                       mobileNumber: mobileController.text,
                       emailId: emailController.text,
                       appointDate: dateController.text,
-                      appointSlotId: slotData[0]["id"].toString(),
+                      appointSlotId: slotId,
                     );
                   },
                   btnHeight: 48,
@@ -290,6 +321,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
   getSlotService({
     String? appointDate,
   }) async{
+
     Dio dio = Dio();
     setState((){
       isLoading2 = true;
@@ -351,7 +383,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
       "last_name" : lName,
       "mobile_no" : mobileNumber,
       "email_id" : emailId,
-      "appoint_date": appointDate,
+      "appoint_date": appointData,
       "app_slot_id": appointSlotId
     };
     Response response = await dio.post('http://drhibasaadeh.com/api/patients/appointment/',
